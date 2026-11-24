@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 桌子底下的碎渣儿 · 青少年版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 11 月 15 日 · 第 26 单元第 3 课</div>
+    <h1>桌子底下的碎渣儿</h1>
+    <div class="tag">马可福音 7:24-37 · <b>狗在桌子底下也吃孩子们的碎渣儿</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 本周四块内容。{{PAINTER}} / {{STORYVID}} 由 build.py 按版本替换成视频页（视频还没做好时就是空的）
+const CRUMB='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 40h72"/><path d="M22 40v44M78 40v44"/><circle cx="34" cy="70" r="3" fill="#fff"/><circle cx="50" cy="78" r="3" fill="#fff"/><circle cx="62" cy="68" r="2.5" fill="#fff"/><path d="M30 24c6-8 34-8 40 0"/></svg>';
+const DOOR='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 88V16h44v72"/><path d="M68 16l14 8v58l-14 6"/><circle cx="58" cy="54" r="3" fill="#fff"/><path d="M12 88h76"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/drouais-canaan.jpg" alt="">',d:'德鲁埃《迦南妇人跪在基督脚前》：三种伸出的手。',slides:[
+`<h3>先认识画家：二十岁的画家</h3><video class="vid" controls preload="metadata" playsinline poster="assets/painter-intro-poster.jpg" src="assets/painter-intro.mp4"></video><p style="text-align:center;margin-top:10px">德鲁埃和他的画。看完再一起细看这幅画。</p>`,
+`<div class="two wide"><img class="pic" src="assets/drouais-canaan.jpg" alt="德鲁埃《迦南妇人跪在基督脚前》：耶稣站在中间向左边跪着的妇人伸出手，右边穿黄衣的老人弯身向前，左边一群人转身离开"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/drouais-canaan.jpg" alt="德鲁埃《迦南妇人跪在基督脚前》"><div><h3>找一找</h3>
+<details><summary>跪在地上的是谁？她的手在做什么？</summary><p>那位外邦妈妈。她双手合在一起，抬头看着耶稣。</p></details>
+<details><summary>耶稣的手伸向谁？</summary><p>伸向她。祂的另一只手放在自己胸前。</p></details>
+<details><summary>右边穿黄衣的老人在做什么？</summary><p>他弯着腰、张开手，好像在对耶稣说什么。马太福音说门徒求耶稣：“请打发她走吧。”（太 15:23）</p></details>
+<details><summary>左边那群人呢？</summary><p>有人转身要走，有人捂着嘴，好像在小声议论。</p></details></div></div>`,
+`<div class="two wide"><div><h3>画家把我们放在哪里？</h3><p class="big">我们站在妇人这一边。<br>画里有三种伸出的手。</p><p>她的手在求；门徒的手在挡；耶稣的手在接纳。你的手，像哪一种？</p><div class="verse"><sup>27</sup> 妇人说：“主啊，不错，但是狗也吃它主人桌子上掉下来的碎渣儿。”<br><sup>28</sup> 耶稣说：“妇人，你的信心是大的！照你所要的，给你成全了吧。”<div class="ref">马太福音 15:27-28</div></div></div><img class="pic" src="assets/drouais-canaan.jpg" alt="德鲁埃《迦南妇人跪在基督脚前》"></div>`,
+`<h3>关于这幅画</h3><p class="big">《迦南妇人跪在基督脚前》（The Woman of Canaan at the Feet of Christ）</p><p>让-日耳曼·德鲁埃（Jean-Germain Drouais，1763–1788）· 1784 年 · 布面油画 · 藏于巴黎卢浮宫。</p><p>他画这幅画时才 20 岁。前一年他参加比赛，觉得自己画得不好，就把画毁了；这一年他凭这幅画赢得了“罗马大奖”，同学们把他扛在肩上，一路送回妈妈家。可惜他 24 岁就在罗马去世了。</p><div class="ask">一个曾经觉得“我不够好”的年轻画家，画了一个“不配”的人被耶稣接纳。你会怎样画这个故事？</div>`]},
+{n:2,t:'本周课程图片',c:'c2',col:'#7b5cd6',tm:'看一张图',art:'<img src="assets/lesson-art.png" alt="">',d:'从桌子底下往上看，这张图想说什么？',slides:[
+`<div class="two wide"><img class="pic" src="assets/lesson-art.png" alt="课程图片：一只小狗在地毯上闻着地上的碎渣儿，旁边是跪着的人的手和脚，右边是桌腿，上方一只手拿着饼"><div><h3>你先看到什么？</h3><p class="big">这张图里，你看不到任何人的脸。</p><details><summary>找一找：碎渣儿在哪里？</summary><p>地毯上、桌面上、小狗的鼻子前面，到处都是。</p></details><details><summary>再找一找：图里有几只手？</summary><p>一只拿着饼，一只撑在地上。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/lesson-art.png" alt="课程图片"><div><h3>为什么从桌子底下画？</h3><p>桌子底下，是“外人”的位置：不在桌上，只能等掉下来的东西。</p><p class="big">可是那位妈妈说：哪怕只是碎渣儿，也够了。</p><div class="ask">你有没有觉得自己在“桌子底下”的时候？耶稣的恩典会照到那里吗？</div></div></div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'第 3 集',art:CRUMB,d:'连续故事集第 3 集《桌子底下的碎渣儿》：五章对应本周五天灵修。',slides:[
+`<h3>小禾的篮子 · 第 3 集《桌子底下的碎渣儿》</h3><p class="big">上一集：</p><div class="story"><p>小禾在养老院带唱诗，第一句就破音了，是王阿姨的妈妈拉住她的手，满屋的老人都唱了起来。回家的公交车上，安安小声问：“我家没有人信耶稣，我也不是你们教会的。你们的耶稣，也要我这样的人吗？”</p></div><p class="big">这一集，小禾要回答一个她自己也不太会答的问题。</p>`,
+`<h3>先看短片：第 3 集《桌子底下的碎渣儿》</h3><video class="vid" controls preload="metadata" playsinline poster="assets/xiaohe-ep3-anime-poster.jpg" src="assets/xiaohe-ep3-anime.mp4"></video><p style="text-align:center;margin-top:10px">80 年代动画风格，小禾用第一人称讲。看完再一章一章读。</p>`,
+`<span class="day">周一 · 彼得前书 2:9-10</span><h3>“要”</h3><div class="story"><p>公交车上，小禾愣了一下，脱口而出：“要。”安安看着窗外，没再说话。</p><p>回到家，小禾躺在床上想：我刚才那个“要”字，是不是说得太快了？</p><p>灵修翻开是彼得前书：“你们从前算不得子民，现在却作了神的子民。”她想起自己第一次去团契，缩在最后一排的角落，谁也不认识。是周老师走过来，坐到了她旁边。</p><p>她给安安发了一条消息：“我说‘要’，是因为我以前也坐在角落。”</p></div><div class="ask">你会怎样描述“活在黑暗中”和“活在光明中”的不同？</div>`,
+`<span class="day">周二 · 罗马书 10:11-13</span><h3>一个“凡”字</h3><div class="story"><p>星期天，安安跟小禾去了团契。散会后，小禾听见两个同学在走廊里小声说：“她又不是我们教会的，是来蹭点心的吧？”安安就站在楼梯口。</p><p>小禾的脸一下子烫了。那天晚上她读到：“凡求告主名的，就必得救。”她拿红笔把“凡”字圈了起来，圈了三遍。</p><p>第二天，她走到那两个同学面前，声音有点抖：“安安是我请来的。下次我们三个一起坐，好吗？”</p></div><div class="ask">耶稣为所有人死了，每个人都值得听到这个好消息。这怎样挑战你？</div>`,
+`<span class="day">周三 · 马太福音 15:21-28</span><h3>没有回音</h3><div class="story"><p>安安的外婆耳朵越来越背，助听器也不太管用。安安悄悄做了她人生第一个祷告：“如果你真的在，让外婆听得见。”</p><p>三天过去了，外婆还是听不清。安安只发来一句：“祂没理我。”</p><p>小禾不知道怎么回。她翻到今天的经文：那位妈妈求耶稣，“耶稣却一言不答”。可是耶稣没有赶她走。</p><p>小禾回她：“故事里那位妈妈，耶稣一开始也没回答。可她一直在那里，耶稣也一直在那里。”</p></div><div class="ask">神的沉默，是不是代表祂没有在做工？为什么？</div>`,
+`<span class="day">周四 · 诗篇 13</span><h3>可以生气吗？</h3><div class="story"><p>安安问：“我可以跟祂生气吗？”</p><p>小禾想了很久，把诗篇 13 篇发给她：“耶和华啊，你忘记我要到几时呢？要到永远吗？你掩面不顾我要到几时呢？”</p><p>“这是大卫写的，”小禾说，“他就是一边生气，一边祷告。”</p><p>那天晚上，两个人在手机两头，各自写了一个不太好看、却很真实的祷告。小禾写的是：“我也不知道怎么回答安安。求你自己回答她。”</p></div><div class="ask">有什么情绪或问题，是你很难带到神面前的？是什么拦住了你？</div>`,
+`<span class="day">周五 · 以赛亚书 35:5-6</span><h3>用她听得懂的方式</h3><div class="story"><p>星期六，小禾跟安安去看外婆。外婆还是听不清，只是笑。</p><p>小禾想起周日的课：耶稣医治那个聋哑人时，用手指、用手势，用他看得懂的方式“说话”。她拿出画本，画了一张饭桌，桌子底下撒满碎渣儿，旁边写了几个大字：“外婆，耶稣也要你。”</p><p>外婆看了很久，用手指点点那些碎渣儿，又点点安安，再点点自己，笑出了眼泪。</p><p>回家路上，安安说：“我觉得，祂好像在用我听得懂的方式，跟我说话。”</p></div><div class="ask">神已经成就的应许，怎样帮助你等候那些还没有回应的祷告？</div>`,
+`<h3>下一集预告</h3><div class="story"><p>星期四深夜，小禾的手机亮了。是安安：</p></div><p class="big">“外婆住院了。医生说……”</p><p>第 4 集，11 月 22 日：<b>复活和生命</b></p>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:DOOR,d:'被接纳的人，去接纳一个人。',slides:[
+`<h3>她为什么没有走？</h3><p class="big">被拒绝了，那位妈妈还是留在耶稣脚前。</p><details><summary>她知道自己“不配”</summary><p>她没有争辩自己够格，只说：“主啊，不错。”</p></details><details><summary>她相信一点点就够</summary><p>耶稣的碎渣儿，就足够医治她的女儿。</p></details><details><summary>耶稣看见了她的信</summary><p>“妇人，你的信心是大的！”（太 15:28）门徒想打发她走，耶稣却接纳了她。</p></details><div class="ask">你有没有一件事，求了很久，想放弃了？</div>`,
+`<h3>外人不再是外人</h3><div class="anchors"><div>耶稣走到外人那里</div><div>耶稣用你听得懂的方式说话</div><div>被接纳的人去接纳人</div></div><p class="big">唯一真正要紧的标签：你是神的孩子。</p><div class="ask">在你的学校、班级、群里，谁常常被当成“外人”？</div>`,
+`<h3>这周，你可以接纳谁？</h3><p>选一个，或者自己想一个。不用告诉别人。</p><div class="steps">${['坐到一个总是一个人坐的同学旁边','主动跟新来的人打招呼','不转发嘲笑别人的图和截图','为一个还不认识耶稣的朋友祷告','邀请一个人来团契','把一直不敢说的需要告诉神'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，你怎样接纳我，<br>求你帮我也这样接纳别人。”</div><p style="text-align:center">这周金句：妇人回答说：“主啊，不错，但是狗在桌子底下也吃孩子们的碎渣儿。”（可 7:28）</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;c.style.transform=`translateX(${k*196}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>

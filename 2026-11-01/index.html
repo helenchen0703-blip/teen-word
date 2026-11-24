@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五饼二鱼 · 话语</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;600;800&family=Noto+Serif+SC:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#1d1530; --night2:#2b2045; --paper:#fbf5e8; --ink:#3a2c1c; --muted:#8a7660;
+  --gold:#e9b44c; --brown:#6b4a22; --c1:#c8553d; --c2:#3f8f8a; --c3:#7a5bd1; --c4:#d88a2b;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --serif:"Noto Serif SC","Songti SC",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:radial-gradient(ellipse at 50% 0%,#3b2b5c 0%,var(--night) 60%) fixed;color:#fff;font-family:var(--sans);overflow-x:hidden}
+button{font-family:inherit;cursor:pointer}
+.hidden{display:none!important}
+
+/* ---------- 首页：卡片选关 ---------- */
+#home{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 16px 18px}
+.kicker{letter-spacing:.3em;font-size:12px;color:#c9b8e8;font-weight:600}
+h1.title{font-family:var(--serif);font-size:clamp(34px,6vw,60px);margin:10px 0 4px;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.25)}
+h1.title span{color:var(--gold)}
+.sub{color:#e6dcf5;margin:0 0 18px;text-align:center}
+.sub b{color:var(--gold)}
+.fan{position:relative;width:100%;max-width:980px;height:min(52vh,420px);display:flex;justify-content:center;align-items:center;margin:8px 0 18px}
+.card{position:absolute;width:min(30vw,220px);aspect-ratio:3/4.2;border-radius:18px;border:4px solid #fff;padding:10px;display:flex;flex-direction:column;
+  box-shadow:0 14px 30px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;color:#fff;text-align:center}
+.card .num{position:absolute;top:8px;left:12px;font-weight:800;font-size:20px}
+.card .art{flex:1;border-radius:10px;margin:22px 0 8px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:64px}
+.card h3{margin:0;font-family:var(--serif);font-size:clamp(16px,2.2vw,22px)}
+.card small{opacity:.85;font-size:12px}
+.card.active{box-shadow:0 0 0 5px var(--gold),0 22px 40px rgba(0,0,0,.5)}
+.infobar{width:100%;max-width:820px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 16px;display:flex;gap:14px;align-items:center}
+.infobar .ico{font-size:34px}
+.infobar h4{margin:0 0 2px;font-size:17px}
+.infobar p{margin:0;color:#d9cfe8;font-size:14px;line-height:1.5}
+.btn{background:var(--gold);color:#3a2600;border:0;border-radius:12px;padding:12px 20px;font-weight:800;font-size:16px;white-space:nowrap;box-shadow:0 4px 0 #a97a1d}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #a97a1d}
+.btn.ghost{background:#efe5d2;color:var(--ink);box-shadow:0 4px 0 #cbbd9f}
+.hint{margin-top:12px;color:#a796c4;font-size:12px}
+
+/* ---------- 关卡页 ---------- */
+#round{min-height:100vh;display:flex;flex-direction:column;padding:12px 16px 16px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.badge{border-radius:999px;padding:5px 12px;font-size:13px;font-weight:800}
+.rtitle{font-family:var(--serif);font-size:20px;font-weight:800;flex:1;min-width:140px}
+.dots{display:flex;gap:6px}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.3);display:block}
+.dots i.on{background:var(--gold)}
+.nav{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:10px;height:34px;min-width:34px;padding:0 12px;font-weight:700}
+.stage{flex:1;background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(16px,3vw,32px);box-shadow:0 20px 50px rgba(0,0,0,.35);display:flex;flex-direction:column;min-height:0}
+.page{display:none;flex-direction:column;gap:16px;flex:1;animation:fade .3s}
+.page.on{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.film{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;background:#1d1530;border-radius:16px;overflow:hidden}
+.film video{display:block;width:100%;max-height:calc(100vh - 230px);aspect-ratio:16/9;background:#000}
+.page h2{margin:0;font-family:var(--serif);font-size:clamp(22px,3vw,32px);color:var(--brown)}
+.page h2 em{font-style:normal;color:var(--c1)}
+.lead{margin:0;color:var(--muted);font-size:16px;line-height:1.6}
+.row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.panel{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 2px 0 #eadfc8}
+.panel h4{margin:0 0 6px;font-size:17px}
+.panel p{margin:0;line-height:1.65}
+.tip{font-size:13px;color:var(--muted);border-left:3px solid var(--gold);padding-left:10px}
+
+/* 图片 + 热点 */
+.pic{position:relative;border-radius:14px;overflow:hidden;background:#000;align-self:center;max-width:100%}
+.pic img{display:block;width:100%;height:auto}
+.spot{position:absolute;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:3px solid #fff;background:rgba(233,180,76,.85);color:#3a2600;font-weight:800;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(233,180,76,.7);animation:pulse 2s infinite;padding:0;font-size:15px}
+.spot.found{background:#3f8f8a;color:#fff;animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(233,180,76,.7)}70%{box-shadow:0 0 0 14px rgba(233,180,76,0)}100%{box-shadow:0 0 0 0 rgba(233,180,76,0)}}
+.veil{position:absolute;inset:0;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(29,21,48,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;transition:opacity .6s}
+.veil.gone{opacity:0;pointer-events:none}
+.timer{font-size:56px;font-weight:800;font-family:var(--serif)}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checklist li{background:#fff;border-radius:12px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;line-height:1.5;box-shadow:0 2px 0 #eadfc8}
+.checklist li .box{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #cbbd9f;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff}
+.checklist li.done .box{background:#3f8f8a;border-color:#3f8f8a}
+.checklist li .note{display:none;color:var(--muted);font-size:14px}
+.checklist li.done .note{display:block}
+.score{font-weight:800;color:var(--c2)}
+
+/* 揭示块 */
+.reveal{background:#f3ead6;border:2px dashed #d8c6a0;border-radius:14px;padding:14px 16px;cursor:pointer;line-height:1.65}
+.reveal .ans{display:none;margin-top:8px;color:var(--ink)}
+.reveal.open{border-style:solid;background:#fff}
+.reveal.open .ans{display:block}
+.reveal .q{font-weight:700}
+.reveal .q::after{content:" 点一下看提示";font-weight:400;font-size:12px;color:var(--muted)}
+.reveal.open .q::after{content:""}
+
+/* 计数 */
+.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.count{background:#fff;border-radius:16px;padding:18px 8px;text-align:center;box-shadow:0 2px 0 #eadfc8;opacity:.25;transform:scale(.92);transition:.4s}
+.count.on{opacity:1;transform:none}
+.count .n{font-family:var(--serif);font-size:clamp(34px,6vw,64px);font-weight:800;color:var(--c1)}
+.count .e{font-size:30px}
+.count .l{color:var(--muted)}
+.punch{font-family:var(--serif);font-size:clamp(20px,3vw,28px);text-align:center;color:var(--brown);opacity:0;transition:.5s}
+.punch.on{opacity:1}
+
+/* 两种眼光 */
+.toggle{display:inline-flex;background:#efe5d2;border-radius:999px;padding:4px;align-self:flex-start}
+.toggle button{border:0;background:none;padding:10px 18px;border-radius:999px;font-weight:700;color:var(--muted);font-size:15px}
+.toggle button.on{background:#fff;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.eyes{display:grid;gap:10px}
+.eyes .item{background:#fff;border-radius:12px;padding:14px 16px;font-size:18px;box-shadow:0 2px 0 #eadfc8;animation:fade .35s both}
+
+/* 故事 */
+.story{flex:1;display:flex;flex-direction:column;gap:14px;max-width:760px;width:100%;align-self:center}
+.ep{font-size:13px;letter-spacing:.2em;color:var(--c3);font-weight:700}
+.scene{background:#fff;border-radius:18px;padding:22px 24px;box-shadow:0 2px 0 #eadfc8;font-size:clamp(17px,2.1vw,21px);line-height:1.9;font-family:var(--serif);min-height:200px;animation:fade .35s}
+.scene .em{font-size:44px;display:block;margin-bottom:6px}
+.scene q{color:var(--c1);font-weight:800}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{border:3px solid #e2d5ba;background:#fff;border-radius:16px;padding:16px;text-align:left;font-size:16px;line-height:1.5;color:var(--ink)}
+.choice:hover{border-color:var(--c3)}
+.choice b{display:block;font-size:18px;margin-bottom:4px}
+.sbar{display:flex;align-items:center;gap:10px}
+.progress{flex:1;height:8px;background:#eadfc8;border-radius:99px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--c3);transition:width .3s}
+.teaser{background:var(--night2);color:#fff;border-radius:18px;padding:20px 22px;font-family:var(--serif);line-height:1.8}
+.teaser .k{font-family:var(--sans);font-size:12px;letter-spacing:.25em;color:var(--gold)}
+.chaps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.chip{border:2px solid #e2d5ba;background:#fff;border-radius:12px;padding:8px 6px;display:flex;flex-direction:column;gap:2px;color:var(--muted);font-size:12px;line-height:1.3}
+.chip b{font-size:15px;color:var(--ink)}
+.chip.on{border-color:var(--c3);background:#f1ecfb;color:var(--c3)}
+.versecard{background:linear-gradient(135deg,#fff,#f6f0ff)}
+.versecard .vday{font-family:var(--sans);font-size:13px;letter-spacing:.1em;color:var(--c3);font-weight:700}
+.versecard .vtext{font-size:clamp(19px,2.4vw,24px);color:var(--brown);margin:8px 0 2px}
+.versecard .vref{font-size:15px;color:var(--muted);text-align:right}
+.versecard .vq{font-family:var(--sans);font-size:16px;line-height:1.7;margin-top:12px;border-top:1px dashed #d8c6a0;padding-top:10px}
+.versecard .vq ol{margin:4px 0 0;padding-left:1.4em}
+
+/* 打分 */
+.rate{display:flex;gap:6px;flex-wrap:wrap}
+.rate button{width:46px;height:46px;border-radius:12px;border:0;background:#fff;font-size:18px;font-weight:800;color:var(--ink);box-shadow:0 2px 0 #eadfc8}
+.rate button.on{background:var(--c1);color:#fff}
+
+/* 交给耶稣 */
+.field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:240px}
+.field label{font-weight:700}
+.field input{font:inherit;font-size:17px;padding:12px 14px;border-radius:12px;border:2px solid #e2d5ba;background:#fff;color:var(--ink)}
+.offer{background:linear-gradient(135deg,#6b4a22,#3b2b5c);color:#fff;border-radius:20px;padding:24px;text-align:center;font-family:var(--serif);line-height:1.9}
+.offer .big{font-size:clamp(20px,2.8vw,28px)}
+.offer .big b{color:var(--gold)}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.day{background:#fff;border:3px solid transparent;border-radius:16px;padding:14px 10px;text-align:center;box-shadow:0 2px 0 #eadfc8;color:var(--ink);line-height:1.5}
+.day .d{font-weight:800;color:var(--c4)}
+.day .ref{font-family:var(--serif);font-weight:800}
+.day .t{font-size:13px;color:var(--muted)}
+.day.done{border-color:#3f8f8a;background:#eaf5f3}
+.day.done .d::after{content:" ✓";color:#3f8f8a}
+.prayer{font-family:var(--serif);font-size:18px;line-height:1.9;text-align:center;color:var(--brown);background:#fff;border-radius:16px;padding:18px}
+
+@media (max-width:700px){
+  .card{width:42vw}
+  .counts{grid-template-columns:repeat(2,1fr)}
+  .choices{grid-template-columns:1fr}
+  .chaps{grid-template-columns:repeat(5,1fr);gap:4px}
+  .chip span{display:none}
+  .days{grid-template-columns:1fr 1fr}
+  .infobar{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 首页 ============ -->
+<section id="home">
+  <div class="kicker">话语 · 周日 11 月 1 日 · 马太福音 14:13–21</div>
+  <h1 class="title">五饼<span>二鱼</span></h1>
+  <p class="sub">四个环节，一句话：<b>“拿过来给我。”</b></p>
+  <div class="fan" id="fan"></div>
+  <div class="infobar">
+    <div class="ico" id="infoIco"></div>
+    <div style="flex:1">
+      <h4 id="infoTitle"></h4>
+      <p id="infoText"></p>
+    </div>
+    <button class="btn" id="enter">进入 →</button>
+  </div>
+  <div class="hint">点卡片选择 · ← → 切换 · Enter 进入 · Esc 回到卡片</div>
+</section>
+
+<!-- ============ 关卡 ============ -->
+<section id="round" class="hidden">
+  <div class="topbar">
+    <span class="badge" id="rBadge"></span>
+    <span class="rtitle" id="rTitle"></span>
+    <div class="dots" id="dots"></div>
+    <button class="nav" id="prev" aria-label="上一页">◀</button>
+    <button class="nav" id="next" aria-label="下一页">▶</button>
+    <button class="nav" id="back">卡片</button>
+  </div>
+  <div class="stage">
+
+  <!-- ===== 1 · 世界名画 ===== -->
+  <div class="round" data-r="1">
+    <div class="page">
+      <h2>先安静看 <em><span id="timer">30</span> 秒</em></h2>
+      <p class="lead">不说话，只用眼睛看。等一下，我们来比比谁看见的细节最多。</p>
+      <div class="pic" id="p1pic">
+        <img src="assets/tintoretto.jpg" alt="丁托列托《五饼二鱼的神迹》">
+        <div class="veil" id="veil">
+          <div class="timer">🖼️</div>
+          <button class="btn" id="startLook">开始看</button>
+        </div>
+      </div>
+      <p class="tip">看完先问：你第一眼看到的是什么？画里的人在做什么？</p>
+    </div>
+
+    <div class="page">
+      <h2>找一找 · <span class="score" id="found">0</span> / 6</h2>
+      <div class="row">
+        <div class="pic" style="flex:2;min-width:300px">
+          <img src="assets/tintoretto.jpg" alt="">
+          <button class="spot" data-i="0" style="left:51%;top:31%">1</button>
+          <button class="spot" data-i="1" style="left:44%;top:34%">2</button>
+          <button class="spot" data-i="2" style="left:53.5%;top:61%">3</button>
+          <button class="spot" data-i="3" style="left:59%;top:42%">4</button>
+          <button class="spot" data-i="4" style="left:41%;top:69%">5</button>
+          <button class="spot" data-i="5" style="left:76%;top:20%">6</button>
+        </div>
+        <ul class="checklist" id="clist" style="flex:1;min-width:240px">
+          <li><span class="box">✓</span><div>找到<b>耶稣</b><div class="note">祂站在正中间，头上有一圈淡淡的光。画家让所有的线都指向祂。</div></div></li>
+          <li><span class="box">✓</span><div>找到<b>饼</b><div class="note">耶稣正把饼递给门徒——“擘开饼，递给门徒，门徒又递给众人”。</div></div></li>
+          <li><span class="box">✓</span><div>找到<b>两条鱼</b><div class="note">在耶稣脚边的盘子里。是不是很容易被忽略？就这么一点点。</div></div></li>
+          <li><span class="box">✓</span><div>找到<b>拿篮子的人</b><div class="note">他捧着一篮饼。五个饼，可以装满一整篮吗？</div></div></li>
+          <li><span class="box">✓</span><div>找到<b>一个小孩</b><div class="note">画里到处都是妈妈和孩子——圣经说“除了妇女孩子”，还有五千个男人。</div></div></li>
+          <li><span class="box">✓</span><div>找到<b>远处的人群</b><div class="note">山坡上坐满了人，一直排到看不见的地方。这么多人，都要吃饭！</div></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page">
+      <h2>画家的小秘密</h2>
+      <div class="row">
+        <div class="panel" style="flex:1;min-width:260px">
+          <h4>丁托列托《五饼二鱼的神迹》</h4>
+          <p>意大利威尼斯画家，大约画于 1545–1550 年，现在挂在纽约大都会艺术博物馆。</p>
+        </div>
+        <div class="panel" style="flex:1;min-width:260px">
+          <h4>你发现了吗？</h4>
+          <p>画里的人穿的不是两千年前加利利的衣服，而是画家那个年代<b>威尼斯人</b>的漂亮衣服、头饰。他把圣经故事画进了自己生活的世界。</p>
+        </div>
+      </div>
+      <div class="reveal"><div class="q">如果把这个故事画在今天、画在我们中间，你会画什么？</div>
+        <div class="ans">可以画：一个人打开的饭盒、一袋零食、外卖盒……还有我们教会、学校、小区。耶稣今天也在我们中间说：“拿过来给我。”</div></div>
+      <div class="reveal"><div class="q">画里有一个人好像没在看耶稣（右边那位）。你觉得她在想什么？</div>
+        <div class="ans">也许她在想：“这么点东西，怎么够？”——就像门徒一样，只看见自己手上的“只有”。</div></div>
+    </div>
+  </div>
+
+  <!-- ===== 2 · 本周课程图片 ===== -->
+  <div class="round" data-r="2">
+    <div class="page">
+      <h2>这张图里，你看见什么？</h2>
+      <div class="row">
+        <div class="pic" style="flex:1;min-width:260px;max-width:440px">
+          <img src="assets/lesson-art.jpg" alt="本周课程主图：一只张开的手，四周是饼和鱼">
+          <button class="spot" data-k="0" style="left:50%;top:70%">✋</button>
+          <button class="spot" data-k="1" style="left:50%;top:22%">✦</button>
+          <button class="spot" data-k="2" style="left:14%;top:28%">🐟</button>
+        </div>
+        <div style="flex:1;min-width:260px;display:grid;gap:12px" id="artNotes">
+          <p class="lead">先让孩子自由说，再点图上的三个亮点。</p>
+          <div class="panel hidden"><h4>✋ 一只张开的手</h4><p>不是握紧的拳头，是<b>张开</b>的手。小男孩张开手，把午餐交出去；耶稣张开手，接过来、祝福、分出去。</p></div>
+          <div class="panel hidden"><h4>✦ 手后面的光环</h4><p>这是耶稣的手。祂有<b>权柄</b>——一句话就能平静风浪、医好病人，也能叫“不够”变成“还有剩”。</p></div>
+          <div class="panel hidden"><h4>🐟 停不下来的饼和鱼</h4><p>饼和鱼从手里一层一层长出来，铺满整张图。这就是<b>供应</b>：在耶稣手里，一点点会越变越多。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <h2>算一算</h2>
+      <p class="lead">点“下一个”，一个一个揭晓。</p>
+      <div class="counts">
+        <div class="count"><div class="e">🍞</div><div class="n">5</div><div class="l">个饼</div></div>
+        <div class="count"><div class="e">🐟</div><div class="n">2</div><div class="l">条鱼</div></div>
+        <div class="count"><div class="e">👨‍👩‍👧</div><div class="n">5000+</div><div class="l">人吃饱</div></div>
+        <div class="count"><div class="e">🧺</div><div class="n">12</div><div class="l">篮子剩下的</div></div>
+      </div>
+      <div class="punch" id="punch">在耶稣手里，“不够”变成了“还有剩”。</div>
+      <div><button class="btn" id="countNext">下一个</button></div>
+    </div>
+
+    <div class="page">
+      <h2>同一群人，<em>两种眼光</em></h2>
+      <div class="toggle" id="eyeToggle">
+        <button class="on" data-v="d">👀 门徒看见的</button>
+        <button data-v="j">❤️ 耶稣看见的</button>
+      </div>
+      <div class="eyes" id="eyes"></div>
+      <p class="tip">问孩子：你平常比较常用哪一种眼光看身边的人？</p>
+    </div>
+  </div>
+
+  <!-- ===== 3 · 连续故事集 ===== -->
+  <div class="round" data-r="3">
+    <div class="page">
+      <h2>先看动画 · <em>小禾的篮子</em> 第 1 集</h2>
+      <div class="film">
+        <video id="film" src="assets/xiaohe-ep1.mp4" poster="assets/xiaohe-ep1-poster.jpg" controls preload="metadata" playsinline></video>
+      </div>
+      <p class="tip">约 2 分钟，蜡笔绘本动画，自带配音和字幕。看完点 ▶ 进入五章故事，一章一章细读、做选择。</p>
+    </div>
+    <div class="page">
+      <div class="story">
+        <div class="ep">连续故事集 · 小禾的篮子 · 第 1 集《我只有这么一点》</div>
+        <div class="chaps" id="chaps"></div>
+        <div class="scene" id="scene"></div>
+        <div class="choices hidden" id="choices"></div>
+        <div class="sbar">
+          <button class="btn ghost" id="sPrev">◀</button>
+          <div class="progress"><i id="sProg"></i></div>
+          <button class="btn" id="sNext">继续 ▶</button>
+        </div>
+        <p class="tip">一天一章，对应本周学生灵修（周一到周五）。主日可以读第 1 章，其余几章留到周间连线时读。人物是虚构的；遇到选择时，先让大家举手投票。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4 · 反思和生活应用 ===== -->
+  <div class="round" data-r="4">
+    <div class="page">
+      <h2>再给这份午餐打一次分</h2>
+      <p class="lead">一开始，五个饼、两条冷掉的鱼，你给了几分？听完故事，现在呢？</p>
+      <div class="rate" id="rate"></div>
+      <div class="panel hidden" id="rateMsg"><p>同一份午餐，放在小男孩手里是“不够”；放到耶稣手里，喂饱了五千多人。<b>分数不在午餐，在于它在谁的手里。</b></p></div>
+    </div>
+
+    <div class="page">
+      <h2>一起讨论</h2>
+      <div class="reveal"><div class="q">1. 耶稣自己还在难过的时候，祂怎样回应人群？这让你看见祂会怎样回应你？</div>
+        <div class="ans">就算正为施洗约翰的死哀伤，耶稣也没有忽略人群——祂“怜悯他们”。耶稣从来不会忙到顾不上我们；我们身体的、心里的需要对祂都重要。</div></div>
+      <div class="reveal"><div class="q">2. 门徒怎样看待耶稣的能力？我们又是怎样限制祂的？</div>
+        <div class="ans">门徒只算自己看得见的：“我们这里只有……”。我们也常这样。但当耶稣要我们做什么，我们可以凭信心去做——即使拿出来的看起来都不够。</div></div>
+      <div class="reveal"><div class="q">3. 众人都“吃饱了”。在耶稣里得满足是什么样子？为什么很难？</div>
+        <div class="ans">就是不再向别的东西寻求满足。我们很难满足，是因为相信了一个谎言：要“耶稣＋别的东西”才会快乐。耶稣是生命的粮，祂满足我们最深的需要。</div></div>
+    </div>
+
+    <div class="page">
+      <h2>“拿过来给我”</h2>
+      <p class="lead">写下一个你现在的需要，再写一样你“手上只有一点点”的东西。也可以只在心里想。</p>
+      <div class="row">
+        <div class="field"><label for="need">我现在的需要</label><input id="need" placeholder="例如：考试很紧张、想交到朋友……"></div>
+        <div class="field"><label for="little">我手上的“一点点”</label><input id="little" placeholder="例如：一点时间、会画画、一句鼓励……"></div>
+      </div>
+      <div><button class="btn" id="makeOffer">交给耶稣</button></div>
+      <div class="offer hidden" id="offer">
+        <div class="big">耶稣，我想把 <b id="oNeed"></b> 交给你，<br>也把我的 <b id="oLittle"></b> 拿给你用。</div>
+        <div>“我不知道你会怎么处理这件事，但我信靠你。”</div>
+      </div>
+    </div>
+
+    <div class="page">
+      <h2>这周的灵修 · 再少也拿给耶稣</h2>
+      <p class="lead">每读完一天，点一下那一天。</p>
+      <div class="days" id="days">
+        <button class="day"><div class="d">周一</div><div class="ref">约翰福音 6:1–15</div><div class="t">再少也拿给耶稣</div></button>
+        <button class="day"><div class="d">周二</div><div class="ref">彼得前书 5:7</div><div class="t">把忧虑卸给祂</div></button>
+        <button class="day"><div class="d">周三</div><div class="ref">马太福音 11:28–29</div><div class="t">到祂这里得安息</div></button>
+        <button class="day"><div class="d">周四</div><div class="ref">约翰一书 3:16–18</div><div class="t">用行动去爱人</div></button>
+        <button class="day"><div class="d">周五</div><div class="ref">以弗所书 3:20</div><div class="t">超过所求所想</div></button>
+      </div>
+      <div class="prayer">神啊，求你让我们在你怎样满足我们的需要上，看见你对我们的爱。<br>你满足我们身体的需要，更满足我们最需要的——从罪中得救。<br>我们相信，你也会看顾其他的每一个需要。阿们。</div>
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<script>
+const ROUNDS = [
+  {n:1, name:"世界名画", time:"约 4′", color:"var(--c1)", art:"url(assets/tintoretto.jpg)", ico:"🖼️",
+   desc:"丁托列托的《五饼二鱼的神迹》：先安静看 30 秒，再在画里找 6 个细节。"},
+  {n:2, name:"本周课程图片", time:"约 4′", color:"var(--c2)", art:"url(assets/lesson-art.jpg)", ico:"✋",
+   desc:"一只张开的手、停不下来的饼和鱼。再算一算，看看门徒和耶稣的两种眼光。"},
+  {n:3, name:"连续故事集", time:"约 7′", color:"var(--c3)", emoji:"🧺", ico:"📖",
+   desc:"《小禾的篮子》第 1 集：先看 2 分钟蜡笔动画，再一天一章跟着本周五天灵修读，两处要替小禾做选择。"},
+  {n:4, name:"反思和生活应用", time:"约 3′", color:"var(--c4)", emoji:"🙌", ico:"💬",
+   desc:"再打一次分、一起讨论，把“我的一点点”交给耶稣，带走这周的灵修。"}
+];
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const store = {get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}}, set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- 首页卡片 ---------- */
+let sel = 0;
+const fan = $("#fan");
+ROUNDS.forEach((r,i)=>{
+  const c = document.createElement("button");
+  c.className = "card"; c.style.background = r.color;
+  c.innerHTML = `<span class="num">${r.n}</span><div class="art" style="${r.art?`background-image:${r.art}`:""}">${r.emoji||""}</div><h3>${r.name}</h3><small>${r.time}</small>`;
+  c.onclick = () => sel===i ? openRound(i) : select(i);
+  fan.appendChild(c);
+});
+function layoutFan(){
+  const w = fan.clientWidth, step = Math.min(w/5.2, 190);
+  [...fan.children].forEach((c,i)=>{
+    const d = i - sel;
+    c.style.transform = `translateX(${d*step}px) translateY(${Math.abs(d)*18 - (d===0?20:0)}px) rotate(${d*6}deg) scale(${d===0?1.08:.94})`;
+    c.style.zIndex = 10 - Math.abs(d);
+    c.classList.toggle("active", d===0);
+  });
+}
+function select(i){
+  sel = (i+ROUNDS.length)%ROUNDS.length; const r = ROUNDS[sel];
+  $("#infoIco").textContent = r.ico;
+  $("#infoTitle").textContent = `第 ${r.n} 环节 · ${r.name}`;
+  $("#infoText").textContent = `${r.time} · ${r.desc}`;
+  layoutFan();
+}
+$("#enter").onclick = () => openRound(sel);
+addEventListener("resize", layoutFan);
+
+/* ---------- 关卡翻页 ---------- */
+let cur = -1, pg = 0;
+function pagesOf(i){ return $$(`.round[data-r="${i+1}"] .page`); }
+function openRound(i, p=0){
+  cur = i; sel = i; const r = ROUNDS[i];
+  $("#home").classList.add("hidden"); $("#round").classList.remove("hidden");
+  $$(".round").forEach(el => el.classList.toggle("hidden", el.dataset.r != i+1));
+  $("#rBadge").textContent = `第 ${r.n} 环节`; $("#rBadge").style.background = r.color;
+  $("#rTitle").textContent = `${r.name} · ${r.time}`;
+  history.replaceState(null,"",`#r${i+1}`);
+  showPage(p);
+}
+function showPage(p){
+  const ps = pagesOf(cur); pg = Math.max(0, Math.min(p, ps.length-1));
+  ps.forEach((el,k)=>el.classList.toggle("on", k===pg));
+  $$("video").forEach(v=>{ if(!v.closest(".page.on") || v.closest(".round.hidden")) v.pause(); });
+  $("#dots").innerHTML = ps.map((_,k)=>`<i class="${k===pg?"on":""}"></i>`).join("");
+  $("#dots").style.display = ps.length>1 ? "" : "none";
+}
+function step(d){
+  const ps = pagesOf(cur);
+  if (pg+d >= ps.length) { if (cur < ROUNDS.length-1) openRound(cur+1); }
+  else if (pg+d < 0) { if (cur > 0) openRound(cur-1, pagesOf(cur-1).length-1); }
+  else showPage(pg+d);
+}
+function goHome(){
+  $$("video").forEach(v=>v.pause());
+  cur = -1; $("#round").classList.add("hidden"); $("#home").classList.remove("hidden");
+  history.replaceState(null,"",location.pathname); select(sel);
+}
+$("#prev").onclick = () => step(-1);
+$("#next").onclick = () => step(1);
+$("#back").onclick = goHome;
+addEventListener("keydown", e=>{
+  if (e.target.tagName === "INPUT") return;
+  if (cur < 0){
+    if (e.key==="ArrowRight") select(sel+1);
+    else if (e.key==="ArrowLeft") select(sel-1);
+    else if (e.key==="Enter") openRound(sel);
+    else if (/^[1-4]$/.test(e.key)) select(+e.key-1);
+  } else {
+    if (e.key==="ArrowRight") step(1);
+    else if (e.key==="ArrowLeft") step(-1);
+    else if (e.key==="Escape") goHome();
+  }
+});
+
+/* ---------- 1 · 世界名画 ---------- */
+$("#startLook").onclick = e => {
+  e.target.remove(); let t = 30;
+  const iv = setInterval(()=>{ t--; $("#timer").textContent = t; if(t<=0){clearInterval(iv);} }, 1000);
+  $("#veil").classList.add("gone");
+};
+const items = $$("#clist li");
+$$('.round[data-r="1"] .spot').forEach(s => s.onclick = () => {
+  s.classList.add("found"); items[s.dataset.i].classList.add("done");
+  $("#found").textContent = items.filter(li=>li.classList.contains("done")).length;
+});
+$$(".reveal").forEach(r => r.onclick = () => r.classList.toggle("open"));
+
+/* ---------- 2 · 本周课程图片 ---------- */
+const artNotes = $$("#artNotes .panel");
+$$('.round[data-r="2"] .spot').forEach(s => s.onclick = () => {
+  s.classList.add("found"); artNotes[s.dataset.k].classList.remove("hidden");
+});
+let ci = 0;
+$("#countNext").onclick = () => {
+  const cs = $$(".count");
+  if (ci < cs.length) cs[ci++].classList.add("on");
+  if (ci === cs.length) { $("#punch").classList.add("on"); $("#countNext").textContent = "再来一次"; ci = cs.length+1; return; }
+  if (ci > cs.length) { cs.forEach(c=>c.classList.remove("on")); $("#punch").classList.remove("on"); ci = 0; $("#countNext").textContent = "下一个"; }
+};
+const EYES = {
+  d:["这是野地，没有吃的","天晚了，时间不够","人太多——叫他们自己去买","我们“只有”五个饼、两条鱼"],
+  j:["一群又饿又累的人","祂“怜悯他们”，先医好病人","“不用他们去，你们给他们吃吧！”","“拿过来给我。”"]
+};
+function showEyes(v){
+  $$("#eyeToggle button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
+  $("#eyes").innerHTML = EYES[v].map((t,k)=>`<div class="item" style="animation-delay:${k*.12}s">${t}</div>`).join("");
+}
+$$("#eyeToggle button").forEach(b => b.onclick = () => showEyes(b.dataset.v));
+showEyes("d");
+
+/* ---------- 3 · 连续故事集 ---------- */
+const CH = [
+  {d:"周一", ref:"约翰福音 6:1–15", theme:"再少也拿给耶稣", steps:[
+    ["📣","周日团契快结束时，周老师宣布：感恩节前的星期六，我们要给小区的清洁工阿姨叔叔办一场<b>爱心早餐</b>。“谁愿意出一份力？”"],
+    ["🙋‍♀️","大家纷纷举手：思远说他妈妈会做包子，可欣会剪视频，双胞胎兄弟能搬桌子。<br>小禾把手攥在口袋里。她什么都不会——除了在本子边上画小画。<b>“这算什么呢？”</b>"],
+    {e:"📖", t:"那天晚上，她翻开周一的灵修：约翰福音 6 章。读到第 9 节，她停住了——“在这里有一个<b>孩童</b>……只是分给这许多人还算什么呢？”<br>那个男孩的午餐，也“不算什么”。<b>小禾该怎么办？</b>", choice:[
+      {label:"🤐 就当没这回事", sub:"反正我会的也帮不上忙。", e:"🤐", t:"她合上本子，关了灯。可是那句话一直在脑子里转：“<b>拿过来给我。</b>”<br>第二天一早，她还是给周老师发了一条消息：“我只会画画……可以画感谢卡吗？”"},
+      {label:"✉️ 给周老师发消息", sub:"“我……可以画感谢卡吗？”", e:"✉️", t:"她打字、删掉、又打字，最后按下发送：“我只会画画……可以画感谢卡吗？”<br>周老师秒回：“太好了！我们正需要。”"}]},
+    ["😳","周老师接着说：“我们需要 <b>50 张</b>。”<br>五十张？！小禾盯着屏幕。她本来以为，自己的“一点点”根本没人要。原来耶稣不是只用“够格”的人——祂用<b>愿意</b>的人。"]
+  ], verse:["在这里有一个孩童，带着五个大麦饼、两条鱼，只是分给这许多人还算什么呢？","约翰福音 6:9"],
+  qs:["你有没有觉得自己能拿出来的“不够好”，不值得带到神面前？为什么？","当我们觉得神用不上我们时，眼睛盯着的是什么？可以把眼光转到哪里？"]},
+
+  {d:"周二", ref:"彼得前书 5:7", theme:"把忧虑卸给祂", steps:[
+    ["😰","周二晚上十点，小禾桌上摊着两样东西：周四的数学测验复习卷，和才画好 6 张的感谢卡。<br>“画不完怎么办？考砸了怎么办？”她越想，胸口越闷。"],
+    ["🫏","姐姐探头进来，坐到床边：“你记得耶稣骑驴进耶路撒冷吗？门徒把衣服<b>搭在驴驹上</b>（路加福音 19:35）。衣服放上去了，就不用自己再扛着。”"],
+    ["📝","小禾撕下一张便利贴，写下：“数学测验、50 张卡、怕让大家失望。”她把纸条夹进彼得前书 5 章，小声说：“耶稣，交给你了。<b>我不捡回来。</b>”"],
+    ["📄","周四成绩出来：78 分，不是她希望的 95。<br>神没有答应每件事都照她想的发生——但祂应许了：<b>祂顾念她</b>。那天考试的时候，她的手没有发抖。"]
+  ], verse:["你们要将一切的忧虑卸给神，因为他顾念你们。","彼得前书 5:7"],
+  qs:["为什么就算知道神爱我们，还是很难把担心的事交给祂？","神有没有应许事情一定照我们想的发展？彼前 5:7 应许的是什么？"]},
+
+  {d:"周三", ref:"马太福音 11:28–29", theme:"到祂这里得安息", steps:[
+    ["🌙","周三半夜十二点，小禾还在画第 19 张。这张的小鸟画歪了——撕掉，重画。<br>她心里有个声音：“要画得完美，神才会满意；灵修也一天都不能断，不然就不算好基督徒。”"],
+    ["😮‍💨","第二天小组时间，她趴在桌上，眼睛都睁不开。周老师递给她一杯热可可：“你画卡片，是为了<b>让</b>神爱你，还是因为神<b>已经</b>爱你？”"],
+    ["✝️","“耶稣在十字架上，已经把最重的那部分做完了。”周老师说，“我们不用再拼命去赚神的爱。祂说：<b>到我这里来，我就使你们得安息。</b>”"],
+    ["😴","那天晚上，小禾画完两张就睡了。第一次，她没有因为“做得不够”而内疚。<br>那张画歪的小鸟她没有撕——仔细看，它好像在笑。"]
+  ], verse:["凡劳苦担重担的人可以到我这里来，我就使你们得安息。我心里柔和谦卑，你们当负我的轭，学我的样式；这样，你们心里就必得享安息。","马太福音 11:28–29"],
+  qs:["信靠耶稣就能与神和好，为什么很多人还是很难在这个真理里安息？","在你每天的生活里，这种“安息”可能是什么样子？"]},
+
+  {d:"周四", ref:"约翰一书 3:16–18", theme:"用行动去爱人", steps:[
+    ["🍙","午饭时间，小禾注意到新转来的同学<b>安安</b>又一个人坐在角落，饭盒里只有一个白馒头。<br>后排有人小声笑：“又是馒头啊。”"],
+    {e:"🤔", t:"小禾想起今天的灵修：“我们相爱，不要只在言语和舌头上……”她低头看看自己的便当：鸡腿、青菜、两个卤蛋。<b>她会怎么做？</b>", choice:[
+      {label:"🙏 在心里为她祷告", sub:"“我为她祷告就好了吧……”", e:"🙏", t:"小禾闭上眼睛为安安祷告。睁开眼，安安还是一个人。<br>她想起经文的后半句：“<b>总要在行为和诚实上。</b>”她端起便当，站了起来。"},
+      {label:"🍱 端着便当走过去", sub:"“这里有人坐吗？”", e:"🍱", t:"“这里有人坐吗？”安安愣了一下，摇摇头。<br>小禾坐下，把一个卤蛋放进安安的饭盒：“我妈卤太多了，帮我吃一个吧。”"}]},
+    ["😊","那天她们聊了一整个午休。原来安安画画也很好；她爸妈在外地工作，她跟奶奶住。<br>放学前，小禾问：“星期六，你想来帮我一起画卡片吗？”"]
+  ], verse:["小子们哪，我们相爱，不要只在言语和舌头上，总要在行为和诚实上。","约翰一书 3:18"],
+  qs:["你的话语和行动，显出你是怎样爱别人的？","不用行动表达，能真的爱一个人吗？为什么？"]},
+
+  {d:"周五", ref:"以弗所书 3:20", theme:"超过所求所想", steps:[
+    ["🖍️","周五，还差 12 张卡，彩色卡纸也用完了。小禾打开存钱罐：存了两个月的零花钱，本来是要买那套<b>48 色马克笔</b>的。"],
+    ["🤲","她把钱握在手里好久。最后，她把手<b>张开</b>——去文具店买了一大叠卡纸。<br>“耶稣，我的计划是买笔。你的计划，一定更好。”"],
+    ["🌅","星期六清晨，社区活动室飘着包子香。清洁工王阿姨拿到卡片，上面画着她推着小车，头顶一个大太阳。<br>王阿姨看了很久，眼圈红了：“这张我要贴在车上。”"],
+    ["🧺","安安也来了，帮忙画完了最后几张。活动结束时，周老师收到一条消息：附近的养老院看到照片，想请团契<b>每个月</b>去画卡片、陪老人聊天。"],
+    ["🐟","回家路上，小禾想起周一读到的那个男孩。他交出去的，只是五个饼、两条鱼；她交出去的，只是几张画。<br>可是在耶稣手里，都变成了<b>还有剩</b>。"]
+  ], verse:["神能照着运行在我们心里的大力充充足足地成就一切，超过我们所求所想的。","以弗所书 3:20"],
+  qs:["有没有什么东西，你还紧紧抓着不愿交给神？想到要交出去，为什么会害怕？","就像那个男孩，神想使用你的顺服，做超过你想象的事。为什么这很难相信？"]}
+];
+const TEASER = `<div class="k">下集预告 · 第 2 集</div>养老院的第一次探访定在下周六。周老师说：“小禾，你来带大家唱诗吧。”<br>一个人站在最前面？小禾的心，跳得像暴风雨里的小船……<br><span style="opacity:.75">—— 下周日：在海面上行走</span>`;
+let chI = 0, sI = 0;
+const picks = {};
+function chSteps(c){ const s = [...CH[c].steps, "verse"]; if (c === CH.length-1) s.push("teaser"); return s; }
+$("#chaps").innerHTML = CH.map((c,k)=>`<button class="chip" data-k="${k}"><b>${c.d}</b><span>${c.theme}</span></button>`).join("");
+$$("#chaps .chip").forEach(b => b.onclick = () => { chI = +b.dataset.k; sI = 0; renderScene(); });
+function renderScene(){
+  const c = CH[chI], ss = chSteps(chI), st = ss[sI], sc = $("#scene"), key = chI+"-"+sI;
+  let waiting = false;
+  $("#choices").innerHTML = "";
+  if (st === "teaser"){ sc.className = "teaser"; sc.innerHTML = TEASER; }
+  else if (st === "verse"){
+    sc.className = "scene versecard";
+    sc.innerHTML = `<div class="vday">${c.d} · ${c.ref} · ${c.theme}</div><div class="vtext">“${c.verse[0]}”</div><div class="vref">—— ${c.verse[1]}</div>
+      <div class="vq"><b>想一想</b><ol>${c.qs.map(q=>`<li>${q}</li>`).join("")}</ol></div>`;
+  } else if (Array.isArray(st)){ sc.className = "scene"; sc.innerHTML = `<span class="em">${st[0]}</span>${st[1]}`; }
+  else if (picks[key] === undefined){
+    sc.className = "scene"; sc.innerHTML = `<span class="em">${st.e}</span>${st.t}`; waiting = true;
+    $("#choices").innerHTML = st.choice.map((o,k)=>`<button class="choice" data-k="${k}"><b>${o.label}</b>${o.sub}</button>`).join("");
+    $$("#choices .choice").forEach(b => b.onclick = () => { picks[key] = +b.dataset.k; renderScene(); });
+  } else { const o = st.choice[picks[key]]; sc.className = "scene"; sc.innerHTML = `<span class="em">${o.e}</span>${o.t}`; }
+  sc.style.animation = "none"; sc.offsetHeight; sc.style.animation = "";
+  $("#choices").classList.toggle("hidden", !waiting);
+  const last = sI === ss.length-1;
+  $("#sNext").classList.toggle("hidden", waiting || (last && chI === CH.length-1));
+  $("#sNext").textContent = last ? `下一章：${CH[chI+1]?.d||""} ▶` : "继续 ▶";
+  $("#sPrev").style.visibility = (sI || chI) ? "visible" : "hidden";
+  $("#sProg").style.width = ((sI+1)/ss.length*100) + "%";
+  $$("#chaps .chip").forEach((b,k)=>b.classList.toggle("on", k===chI));
+}
+$("#sNext").onclick = () => { if (sI < chSteps(chI).length-1) sI++; else { chI++; sI = 0; } renderScene(); };
+$("#sPrev").onclick = () => {
+  if (sI > 0) sI--; else { chI--; sI = chSteps(chI).length-1; }
+  delete picks[chI+"-"+sI]; renderScene();
+};
+renderScene();
+
+/* ---------- 4 · 反思和生活应用 ---------- */
+for (let k=1;k<=10;k++){
+  const b = document.createElement("button"); b.textContent = k;
+  b.onclick = () => { $$("#rate button").forEach(x=>x.classList.toggle("on", x===b)); $("#rateMsg").classList.remove("hidden"); };
+  $("#rate").appendChild(b);
+}
+$("#makeOffer").onclick = () => {
+  $("#oNeed").textContent = $("#need").value.trim() || "我的需要";
+  $("#oLittle").textContent = $("#little").value.trim() || "一点点";
+  $("#offer").classList.remove("hidden");
+};
+const doneDays = store.get("wb-1101-days", []);
+$$(".day").forEach((d,k)=>{
+  d.classList.toggle("done", doneDays.includes(k));
+  d.onclick = () => {
+    d.classList.toggle("done");
+    store.set("wb-1101-days", $$(".day").map((x,j)=>x.classList.contains("done")?j:-1).filter(j=>j>=0));
+  };
+});
+
+/* ---------- 启动 ---------- */
+select(0);
+const m = location.hash.match(/^#r([1-4])$/);
+if (m) openRound(+m[1]-1);
+</script>
+</body>
+</html>
