@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 复活和生命 · 儿童版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 11 月 22 日 · 第 26 单元第 4 课</div>
+    <h1>复活和生命</h1>
+    <div class="tag">约翰福音 11:17-44 · <b>复活在我，生命也在我</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 本周四块内容。{{PAINTER}} / {{STORYVID}} 由 build.py 按版本替换成视频页（视频还没做好时就是空的）
+const SUN='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 86V54a32 32 0 0 1 64 0v32"/><path d="M12 86h76"/><circle cx="50" cy="40" r="10"/><path d="M50 16v6M30 24l4 4M70 24l-4 4M24 40h6M70 40h6"/></svg>';
+const DOOR='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 88V16h44v72"/><path d="M68 16l14 8v58l-14 6"/><circle cx="58" cy="54" r="3" fill="#fff"/><path d="M12 88h76"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/vangogh-lazarus.jpg" alt="">',d:'梵高《拉撒路复活》：画里看不见耶稣，光却照满了山洞。',slides:[
+`<h3>先看短片：名画解说室</h3><video class="vid" controls preload="metadata" playsinline poster="assets/painter-intro-poster.jpg" src="assets/painter-intro.mp4"></video><p style="text-align:center;margin-top:10px">梵高、伦勃朗和这幅《拉撒路复活》。看完再一起细看这幅画。</p>`,
+`<div class="two wide"><img class="pic" src="assets/vangogh-lazarus.jpg" alt="梵高《拉撒路复活》：左边山洞里一个裹着白布的人刚坐起来，右边两个女人一个张开双手、一个转身，天上一个大大的黄色太阳"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/vangogh-lazarus.jpg" alt="梵高《拉撒路复活》"><div><h3>找一找</h3>
+<details><summary>左边躺着的人是谁？他在做什么？</summary><p>拉撒路。他刚从死里醒过来，身上还裹着细麻布，正慢慢睁开眼睛。</p></details>
+<details><summary>右边两个女人是谁？</summary><p>他的两个姐姐：马大和马利亚。一个惊讶地张开双手，一个转过身去。</p></details>
+<details><summary>画里有耶稣吗？</summary><p>找不到。可是天上有一个大太阳，整个山洞都被照亮了。很多人认为，这个太阳就代表耶稣。</p></details>
+<details><summary>拉撒路的胡子是什么颜色？</summary><p>红色。有学者推测，梵高画的是他自己。</p></details></div></div>`,
+`<h3>两幅画，找三处不同</h3><div class="two"><img class="pic" src="assets/rembrandt-lazarus.jpg" alt="伦勃朗《拉撒路复活》蚀刻版画，1632 年：耶稣站在中间举起手，一大群人围观"><img class="pic" src="assets/vangogh-lazarus.jpg" alt="梵高《拉撒路复活》，1890 年"></div><p>左边：伦勃朗 1632 年的版画。右边：梵高 1890 年照着它画的油画。</p><details><summary>第一处</summary><p>伦勃朗画了耶稣举起手，大声说：“拉撒路，出来！”梵高把耶稣拿掉了。</p></details><details><summary>第二处</summary><p>伦勃朗画了一大群人，惊讶、害怕；梵高只留下两个姐姐。</p></details><details><summary>第三处</summary><p>伦勃朗的山洞是黑的；梵高的山洞照满了黄色的光。</p></details><div class="ask">伦勃朗画的是“神迹有多大能”，梵高画的是“一个人被叫醒的那一刻”。你更喜欢哪一幅？为什么？</div>`,
+`<h3>关于这幅画</h3><p class="big">《拉撒路复活（仿伦勃朗）》</p><p>文森特·梵高（Vincent van Gogh，1853–1890）· 1890 年 5 月 · 布面油画 · 藏于阿姆斯特丹梵高博物馆。</p><p>梵高的爸爸是牧师，他最早想做的也是牧师：在英国第一次讲道，在比利时煤矿区做传道人，把房间让给没有家的人，自己睡在稻草上。可是神学考试没过，传道学校没读成，教会也不再让他讲道。27 岁那年，他拿起了画笔。</p><p>1889 年他生了重病，住进法国南部的一家医院，在那里画了这幅画。两个多月后，他就去世了，只有 37 岁。</p><div class="ask">一个曾经想当牧师、却一次次失败的人，在最黑暗的时候画了一个“被叫出坟墓的人”。你觉得他想对自己说什么？</div>`,
+`<div class="two wide"><img class="pic" src="assets/vangogh-bible.jpg" alt="梵高《有圣经的静物》，1885 年：一本翻开的大圣经，旁边一支没有点着的蜡烛和一本黄色小说"><div><h3>还有一幅：《有圣经的静物》</h3><p>1885 年，梵高的爸爸突然去世。几个月后，他画了爸爸的大圣经。</p><p class="big">圣经翻开的地方，正好是以赛亚书 53 章。</p><div class="verse">他被藐视，被人厌弃，多受痛苦，常经忧患。<div class="ref">以赛亚书 53:3</div></div><p>这周的灵修，第二到第四天读的就是这一章。</p></div></div>`]},
+{n:2,t:'本周课程图片',c:'c2',col:'#7b5cd6',tm:'看一张图',art:'<img src="assets/lesson-art.jpg" alt="">',d:'坟墓前的那一刻：每个人的表情都不一样。',slides:[
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片：耶稣站在右边伸出手，左边三个人捂着头、张着嘴，惊讶地看着；最左边是一个裹着白布的人的背影"><div><h3>你先看到什么？</h3><p class="big">图里有几个人？他们的表情一样吗？</p><details><summary>找一找：最左边那个裹着白布的是谁？</summary><p>拉撒路。他刚刚从坟墓里走出来。</p></details><details><summary>再找一找：只有一个人是有颜色的，是谁？</summary><p>耶稣。祂伸出手，就像刚刚说完：“拉撒路，出来！”</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片"><div><h3>如果你站在人群里</h3><p>有人捂着头，有人张大了嘴。四天前他们还在哭，现在死了的人走出来了。</p><p class="big">耶稣有掌管生死的权柄，我们可以完全信靠祂。</p><div class="ask">如果你在现场，你会是哪一个表情？你最想问耶稣什么？</div></div></div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'第 4 集',art:SUN,d:'连续故事集第 4 集《复活和生命》：五章对应本周五天灵修。',slides:[
+`<h3>小禾的篮子 · 第 4 集《复活和生命》</h3><p class="big">上一集：</p><div class="story"><p>星期六，小禾跟安安去看外婆。外婆耳朵听不见，小禾就画了一张饭桌，桌子底下撒满碎渣儿，旁边写着：“外婆，耶稣也要你。”外婆看了很久，笑出了眼泪。</p><p>可是星期四深夜，安安发来一条消息：“外婆住院了。医生说……”</p></div>`,
+`<h3>先看短片：第 4 集《复活和生命》</h3><video class="vid" controls preload="metadata" playsinline poster="assets/xiaohe-ep4-poster.jpg" src="assets/xiaohe-ep4.mp4"></video><p style="text-align:center;margin-top:10px">水彩日记短片。看完再一章一章读，每章后面有一个讨论问题。</p>`,
+`<span class="day">周一 · 诗篇 34:17-18</span><h3>耶和华靠近伤心的人</h3><div class="story"><p>第二天是月考。小禾一晚上没睡好，数学最后一道大题空着没写。课间安安趴在桌上，后排有人小声说她“一大早摆什么脸”。</p><p>放学后，小禾陪安安去医院。两个人坐在重症监护室外的塑料椅上，谁也没说话。小禾不知道该说什么，就把自己的保温杯塞到安安手里。</p><p>晚上灵修读到：“耶和华靠近伤心的人。”她给安安发：“我不知道怎么安慰你，但我想陪着你。”</p></div><div class="ask">你有没有在难过的时候，觉得神离你很远？是什么让你这样觉得？</div>`,
+`<span class="day">周二 · 以赛亚书 53:1-3</span><h3>多受痛苦，常经忧患</h3><div class="story"><p>月考成绩发到了家长群，安安的年级排名掉了一百多名，班主任让她“赶紧调整状态”。</p><p>课间，安安靠在走廊的窗户上问：“你们的神，知道难过是什么感觉吗？”</p><p>小禾想起周日的课：耶稣在拉撒路的坟前，也哭了。她把“他多受痛苦，常经忧患”抄在一张便利贴上，悄悄放进安安的笔袋。</p></div><div class="ask">耶稣没有以强大君王的样子来，而是经历了各种痛苦。为什么“耶稣也受过苦”这件事能安慰我们？</div>`,
+`<span class="day">周三 · 以赛亚书 53:4-9</span><h3>祂担当我们的忧患</h3><div class="story"><p>外婆醒了一会儿，认出了小禾，指了指床头那张画，就是那张饭桌和碎渣儿。</p><p>外婆的声音很轻：“我这辈子，有好多对不起人的事，放不下。”</p><p>小禾想起今天的经文：“他诚然担当我们的忧患，背负我们的痛苦。”她轻轻说：“外婆，这些，耶稣替你背了。”外婆握着安安的手，点点头：“那我就放下了。”</p></div><div class="ask">耶稣已经替你担当了。你心里还在背着什么重担？</div>`,
+`<span class="day">周四 · 以赛亚书 53:10-12</span><h3>受苦不是结局</h3><div class="story"><p>星期四清晨，外婆安详地走了。床头，还放着那张画。</p><p>安安请了一周假。小禾每天把各科作业拍下来发给她，帮她记笔记。</p><p>体育课测 800 米，有同学问安安怎么不来，小禾只说：“她家里有事。”她没有把安安的事说出去。</p><p>晚上她读到：耶稣受苦以后，并没有停在坟墓里。</p></div><div class="ask">为什么耶稣的死和复活，能让我们在受苦的时候，仍然带着盼望？</div>`,
+`<span class="day">周五 · 约翰福音 11:1-4；罗马书 8:28</span><h3>万事互相效力</h3><div class="story"><p>星期六的告别会上，安安的妈妈第一次问小禾：“你们信的耶稣，是什么样的？”</p><p>回家的路上，小禾给安安读约翰福音 11:25：“复活在我，生命也在我。”</p><p>安安问：“那我还能再见到外婆吗？”小禾说：“我相信能。”</p><p>安安哭了很久，然后说：“下个星期天，我想跟你去团契。”</p></div><div class="ask">很多人因为拉撒路的事信了耶稣。这件事怎样改变你看待自己遇到的难处？</div>`,
+`<h3>第一季 · 完</h3><div class="story"><p>从五饼二鱼的小篮子，到海面上的那只手，到桌子底下的碎渣儿，再到今天的“复活在我，生命也在我”。</p></div><p class="big">小禾和安安的故事，第一季到这里结束了。</p><div class="ask">这四集里，你最记得哪一个画面？为什么？</div>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:DOOR,d:'祂叫拉撒路出来，也在叫你。',slides:[
+`<h3>“主啊，你若早在这里”</h3><p class="big">马大和马利亚都觉得：耶稣来晚了。</p><details><summary>耶稣真的来晚了吗？</summary><p>没有。祂说：“我是为他们来的，叫你们看见神的荣耀。”（约 11:4、40）</p></details><details><summary>耶稣到了，先做了什么？</summary><p>祂没有先讲道理，而是先和她们一起哭。（约 11:35）</p></details><details><summary>然后呢？</summary><p>祂在坟墓前大声说：“拉撒路，出来！”死了四天的人，走出来了。</p></details><div class="ask">你有没有觉得“神来晚了”的时候？那时你最想对祂说什么？</div>`,
+`<h3>复活在我，生命也在我</h3><div class="anchors"><div>耶稣和伤心的人一起哭</div><div>耶稣有掌管生死的权柄</div><div>受苦不是结局</div></div><p class="big">拉撒路后来还是会死。所以耶稣说的不只是“我能让人复活”，而是：“复活在我，生命也在我。”</p><div class="ask">如果你是拉撒路，你最想从什么“坟墓”里出来？（害怕、考砸了的难过、和谁闹僵了……）</div>`,
+`<h3>这周在学校，你可以这样做</h3><p>选一个，或者自己想一个。不用告诉别人。</p><div class="steps">${['同学家里有事，不追问、不传话','帮请假的同学记作业、拍笔记','有人情绪不好，不说“摆什么脸”','陪一个难过的人坐一会儿，不用讲道理','考砸了、心慌的时候，在心里祷告','把一直放不下的事，交给耶稣'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，谢谢你和伤心的人一起哭。<br>求你帮我陪伴身边难过的人，<br>也帮我在等候的时候信靠你。”</div><p style="text-align:center">这周金句：耶稣对她说：“复活在我，生命也在我。信我的人虽然死了，也必复活。”（约翰福音 11:25）</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;c.style.transform=`translateX(${k*196}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>
