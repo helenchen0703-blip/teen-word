@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 寻找拯救失丧的人 · 青少年版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}.c5{background:linear-gradient(160deg,#e3a93c,#c98a1e)}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.qa{background:#fff;border:2px solid var(--paper2);border-radius:16px;padding:14px 18px;margin:8px 0}.qa .q{font-weight:700;color:#a86f00}.qa .a{font-family:var(--serif);font-size:clamp(22px,2.8vw,28px);line-height:1.75;margin:6px 0 0}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid #c98a1e;color:transparent;cursor:pointer;border-radius:4px;background:#fdf0d3;padding:0 4px;margin:0 2px;user-select:none}.blank.show{color:#1c2a4a;background:#e7f5ec;border-color:var(--teal)}
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.parts div{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:10px 14px;font-size:18px}.parts b{display:block;color:#a86f00}
+.kidline{border:3px dashed #c98a1e;border-radius:14px;padding:10px 16px;font-weight:700;font-size:clamp(24px,3vw,32px);text-align:center;margin:12px 0}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors,.parts{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 12 月 6 日 · 第 27 单元第 2 课</div>
+    <h1>寻找拯救失丧的人</h1>
+    <div class="tag">路加福音 19:1-10 · <b>人子来，为要寻找拯救失丧的人</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 12/6 周 · U27S2 寻找拯救失丧的人。/*{{PAINTER}}*/ /*{{PAINTING}}*/ /*{{STORYVID}}*/ /*{{WSC}}*/ 由 build.py 按版本替换
+const TREE='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 90V52"/><path d="M50 66 34 54M50 58l14-10"/><path d="M50 52c-20 0-30-12-26-24 2-8 10-12 16-10 2-8 18-8 20 0 8-2 16 4 16 12 2 12-8 22-26 22z"/><circle cx="62" cy="34" r="4" fill="#fff"/><path d="M24 90h52"/></svg>';
+const NAME='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="26" width="72" height="52" rx="8"/><path d="M38 26V16h24v10"/><path d="M28 46h44M28 60h28"/></svg>';
+const BOOK='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 26c-10-8-22-8-34-4v54c12-4 24-4 34 4 10-8 22-8 34-4V22c-12-4-24-4-34 4z"/><path d="M50 26v54"/><path d="M40 12c0-4 20-4 20 0"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/tissot-zacchaeus.jpg" alt="">',d:'蒂索《撒该在桑树上等候耶稣》：一个大人，爬到了树上。',slides:[
+`<h3>先看短片：名画解说室</h3><video class="vid" controls preload="metadata" playsinline poster="assets/painter-intro-poster.jpg" src="assets/painter-intro.mp4"></video><p style="text-align:center;margin-top:10px">蒂索和这幅《撒该在桑树上等候耶稣》。看完再一起细看这幅画。</p>`,
+`<div class="two wide"><img class="pic" src="assets/tissot-zacchaeus.jpg" alt="蒂索《撒该在桑树上等候耶稣经过》：一棵大树横着的粗树干上趴着一个穿金黄色条纹袍子的人，正朝左下方看；左下方的街上挤满了人，最前面一个穿白袍的人举着手走过来"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/tissot-zacchaeus.jpg" alt="蒂索《撒该在桑树上等候耶稣经过》"><div><h3>找一找</h3>
+<details><summary>撒该在哪里？他穿什么颜色的衣服？</summary><p>画面正中偏上，趴在横着的粗树干上。他穿金黄色的条纹袍子，戴橘色头巾，是整幅画里最亮的一件衣服：他是个有钱人。</p></details>
+<details><summary>耶稣在画里吗？</summary><p>在。左下方人群的最前面，穿白袍、蒙着白头巾、举着一只手的那一位。祂正朝大树走来，还没有走到树下。</p></details>
+<details><summary>爬高的只有撒该一个人吗？</summary><p>不是。右上方还有两个穿白衣服的年轻人也爬上了树，右下角还有人正往石墙上爬。大家都想看耶稣。</p></details>
+<details><summary>我们是站在哪里看这一幕的？</summary><p>不在街上，而是在树上，就在撒该旁边，和他一起往下看。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/tissot-zacchaeus.jpg" alt="蒂索《撒该在桑树上等候耶稣经过》"><div><h3>还差几步</h3><p class="big">画家画的不是“耶稣叫他”的那一刻，而是前一刻：等。</p><p>撒该一只手抓着树枝，身子探出去。他以为自己只是来看一眼的。他还不知道，再过几步，那个穿白袍的人会停下来，抬头，叫出他的名字。</p><div class="verse">他要看看耶稣是怎样的人；只因人多，他的身量又矮，所以不得看见，就跑到前头，爬上桑树，要看耶稣。<div class="ref">路加福音 19:3-4</div></div><div class="ask">一个有钱有地位的大人，当着全城人的面爬树。你觉得他心里有多想见耶稣？你有没有为了一件事，这样“不怕丢脸”过？</div></div></div>`,
+`<div class="two"><img class="pic" src="assets/tissot-ball.jpg" alt="蒂索《船上的舞会》，约 1874 年：甲板上挂满各国旗帜，穿着华丽长裙的女士们坐着聊天"><div><h3>关于这位画家</h3><p class="big">詹姆斯·蒂索（James Tissot，1836–1902）</p><p>他是巴黎和伦敦最时髦的画家之一，专画舞会、游船和漂亮的裙子，就像左边这幅。名利双收，有点像撒该。</p><p>1885 年，他走进巴黎的一座教堂，本来只是想为新画找素材。据他自己说，在那里他好像看见了耶稣，心被抓住了。</p><p>从那以后，他放下原来的题材，坐船去巴勒斯坦实地写生，用了差不多十年，画了大约 350 幅水彩，合起来叫《耶稣生平》。树上的撒该，就是其中一幅。</p><div class="ask">一个画舞会的人，后来只画耶稣。你觉得，他画撒该的时候，会不会想到自己？</div></div></div>`,
+]},
+{n:2,t:'本周课程图片',c:'c2',col:'#7b5cd6',tm:'看一张图',art:'<img src="assets/lesson-art.jpg" alt="">',d:'这一次，你是坐在树上的那个人。',slides:[
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片：从桑树上往下看，近处是一顶紫色的帽子和一只伸出去的手，树下一个穿棕色衣服的人抬起头、举起手，正朝树上看"><div><h3>你先看到什么？</h3><p class="big">这张图是从哪里往下看的？</p><details><summary>找一找：最下面那顶紫色的帽子是谁的？</summary><p>撒该的。我们正坐在他的肩膀后面，和他一起躲在树叶里。</p></details><details><summary>树下那个人在做什么？</summary><p>耶稣停下来，抬起头，朝树上伸出手。整张图里，只有祂是暖色的。</p></details><details><summary>树下还有别人吗？</summary><p>没有。画家把人群都拿掉了，好像这一刻，耶稣只看着一个人。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片"><div><h3>如果你就是树上的人</h3><p>撒该只是想偷偷看一眼。他没想到，耶稣会停下来，抬头，叫出他的名字。</p><div class="verse">耶稣到了那里，抬头一看，对他说：“撒该，快下来！今天我必住在你家里。”<div class="ref">路加福音 19:5</div></div><p class="big">与耶稣真实相遇，会改变我们的心和行为。</p><div class="ask">如果耶稣在树下叫的是你的名字，你最先的感觉是什么：高兴、紧张，还是想再往树叶里躲一躲？</div></div></div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'第二季 · 第 5 集',art:TREE,d:'第二季开始：初二（3）班有一个谁都不叫名字的人。',slides:[
+`<h3>小禾的篮子 · 第二季《记名本》</h3><p class="big">第 5 集《树上的人》</p><div class="story"><p>新学期，小禾升初二了。安安还是她的同桌，现在每个星期天跟她一起去团契。</p><p>初二（3）班第一排，坐着全班个子最矮的男生，陈默。这学期，班主任孙老师让他当纪律委员。他有一个黑色的小本子：午休谁说话、自习谁走动、跑操谁没对齐，都记在上面，星期五交给孙老师，扣量化分。</p><p>全班没有人叫他陈默。大家叫他“记名机”。</p></div>`,
+`<span class="day">周一 · 以西结书 34:16</span><h3>失丧的，我必寻找</h3><div class="story"><p>星期一午休，我跟安安说了一句话，就一句。下午班会，孙老师念名单：“林小禾，午休说话，扣一分。”我们组的流动红旗，这周又没戏了。</p><p>我回头瞪了陈默一眼。赵一鸣在后排小声说：“记名机又开机了。”全班都笑了，我也笑了。</p><p>中午在食堂排队打饭，我看见陈默端着餐盘，走到最角落那张桌子，背对着所有人坐下。那张桌子，只有他一个人。</p><p>我忽然想起昨天的课：耶稣走到树下，停下来，抬头。</p></div><div class="ask">你们班、你们年级，有没有一个“大家都不太理”的人？你知道他的名字吗？</div>`,
+`<span class="day">周二 · 以弗所书 2:1-7</span><h3>从前……然而神</h3><div class="story"><p>晚上写完作业，班里的小群又热闹起来。有人把陈默低头记名字的样子截了图，配上字：“已记录，扣分中”。一连刷了二十多条。</p><p>我的手指停在“转发”上面。</p><p>去年，我在养老院唱歌破了音，被人做成“破音公主”的表情包，在这个群里传了一整天。那天晚上我是哭着睡着的。</p><p>我没有转发，把手机扣在了桌上。第二天安安问我：“你以前也会跟着发吗？”我说：“会。以前会。”</p></div><div class="ask">保罗说，我们“从前”是一个样子，“然而神”让我们活过来。认识耶稣以后，有没有一件你以前觉得“没什么”的事，现在做不下去了？</div>`,
+`<span class="day">周三 · 以弗所书 2:8-10</span><h3>不是因为我好，是因为祂先来</h3><div class="story"><p>体育课练跳长绳，下个月要比赛。老师说：“十个人一组，自己组队。”</p><p>不到一分钟，操场上就站成了四堆。只剩一个人站在中间，手不知道往哪儿放。没有哪一组开口。</p><p>我的心跳得很快。我知道，一开口，大家都会看我。</p><p>“陈默，来我们组。”</p><p>他愣了大概三秒钟，好像不确定这两个字是在叫他。这是这学期，第一次有人叫他的名字。</p></div><div class="ask">神不是等你长大了才用你。这一周，圣灵有没有在哪件小事上推了你一下？</div>`,
+`<span class="day">周四 · 歌罗西书 1:9-14</span><h3>行事为人对得起主</h3><div class="story"><p>星期四课间，陈默满教室找东西，脸都白了。他的记名本不见了。明天就要交。</p><p>赵一鸣他们几个憋着笑。我知道本子在哪儿：做值日的时候，我看见有人把它塞到了卫生角的垃圾桶后面。</p><p>说出来，我就成了“跟记名机一伙的”。不说，好像也不关我的事。</p><p>放学后教室没人了。我把本子捡出来，用纸巾擦干净，放回他的桌斗里。第二天赵一鸣看了我一眼：“林小禾，你管得真宽。”</p><p>那一天，没有人跟我一起去小卖部。</p></div><div class="ask">做对的事，有时候会让你“不合群”。你遇到过吗？那时候是什么帮你撑住的？</div>`,
+`<span class="day">周五 · 歌罗西书 1:15-23</span><h3>他要看看耶稣是怎样的人</h3><div class="story"><p>星期五中午，我和安安端着餐盘，坐到了最角落那张桌子，陈默的对面。他吓了一跳，筷子都停了。</p><p>过了很久，他小声说：“本子是孙老师让我记的。我不记，挨批的就是我。”又说：“你是这学期第一个叫我名字的人。为什么？”</p><p>我想了想，说：“因为有一个人，先这样叫了我。”</p><p>他没听懂。安安在旁边说：“星期天你自己来听吧。”</p><p>我在速写本上画了一棵树。树上有一个人，树下有一个人，正抬着头。</p></div><div class="ask">撒该爬上树，是想“看看耶稣是怎样的人”。如果同学问你“耶稣是谁”，你会怎么用自己的话说？</div>`,
+`<h3>下一集</h3><div class="story"><p>元旦联欢会要选主持人了。孙老师的话还没说完，全班已经在喊同一个名字：</p><p class="big">“赵一鸣！赵一鸣！”</p><p>我也跟着喊了。陈默被分去搬桌子、管音响。</p></div><p>第 6 集《欢呼声》</p><div class="ask">这一集里，你最像谁：小禾、安安、赵一鸣，还是陈默？</div>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:NAME,d:'撕掉标签，叫出名字。',slides:[
+`<h3>大家看见的，和耶稣看见的</h3><p class="big">同一个撒该，两种看法。</p><details><summary>人群看见的是什么？</summary><p>税吏长、有钱人、“罪人”。他们私下议论：“他竟到罪人家里去住宿。”（路 19:7）</p></details><details><summary>耶稣看见的是什么？</summary><p>一个有名字的人。祂说：“他也是亚伯拉罕的子孙。”（路 19:9）</p></details><details><summary>先发生的是哪一件：撒该改变，还是耶稣去他家？</summary><p>耶稣先去他家。撒该不是改好了才被接纳，而是被接纳了才改变。</p></details><div class="ask">有没有一个标签，是别人贴在你身上、你很想撕掉的？又有没有一个标签，是你贴在别人身上的？</div>`,
+`<h3>下来以后</h3><div class="anchors"><div>耶稣先抬头</div><div>撒该欢欢喜喜接待</div><div>他站着说：我还</div></div><p class="big">撒该没有只说一句“对不起”。他站起来，把一半家产给穷人，讹诈了谁，就还四倍。</p><div class="verse">人子来，为要寻找拯救失丧的人。<div class="ref">路加福音 19:10</div></div><div class="ask">如果你是撒该，你“下来以后”最先要去还的是什么？（一句道歉、一个被你取过外号的人、借了没还的东西……）</div>`,
+`<h3>这周在学校，你可以这样做</h3><p>选一个，或者自己想一个。不用告诉别人。</p><div class="steps">${['叫一个人的名字，不叫外号','群里刷别人的截图，我不转发','分组的时候，喊一个落单的人','中午和一个人吃饭的同学坐一桌','别人被捉弄，我不跟着笑','去跟一个人说：“上次是我不对”'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，谢谢你先抬头看见我，<br>叫我的名字。<br>求你帮我用你的眼睛看身边的人，<br>也给我转身的勇气。”</div><p style="text-align:center">这周金句：人子来，为要寻找拯救失丧的人。（路加福音 19:10）</p>`]},
+{n:5,t:'小要理问答',c:'c5',col:'#c98a1e',tm:'第 87 问',art:BOOK,d:'什么是得生命的悔改？撒该做给我们看了。',slides:[
+`<h3>小要理问答是什么？</h3><p class="big">三百多年前，一群牧师把圣经最重要的教导，写成了 107 个一问一答。</p><p>它叫《威斯敏斯德小要理问答》（1647 年）。“小”，是因为它是写给孩子和刚信主的人背的。从这个月起，我们每周学一问，跟当周的课连在一起。</p><div class="qa"><div class="q">这周 · 第 87 问</div><p class="a">什么是得生命的悔改？</p></div><div class="ask">先别翻页。用你自己的话说说看：“悔改”和“说对不起”，有什么不一样？</div>`,
+`<h3>第 87 问</h3><div class="qa"><div class="q">问：什么是得生命的悔改？</div><p class="a">答：得生命的悔改是一种救人的恩典；罪人借此真正认识自己的罪，又领会神在基督里的怜悯，就为自己的罪忧伤、恨恶，离开罪归向神，立定心志，竭力过新的顺服生活。</p></div><p style="font-size:16px;color:#6d6580">Q. 87. What is repentance unto life? — A. Repentance unto life is a saving grace, whereby a sinner, out of a true sense of his sin, and apprehension of the mercy of God in Christ, doth, with grief and hatred of his sin, turn from it unto God, with full purpose of, and endeavour after, new obedience.</p>`,
+`<h3>一句一句拆开看</h3><div class="parts"><div><b>救人的恩典</b>悔改不是我们挣来的分数，是神赐的礼物。“神也赐恩给外邦人，叫他们悔改得生命了。”（徒 11:18）</div><div><b>认识罪 + 领会怜悯</b>两样都要：只看见罪会绝望，只听见怜悯会轻看罪。</div><div><b>忧伤、恨恶，离开罪归向神</b>不是只说一句“对不起”，而是转身：背对罪，面向神。</div><div><b>新的顺服</b>撒该说：“我把所有的一半给穷人；我若讹诈了谁，就还他四倍。”（路 19:8）</div></div>`,
+`<h3>在撒该身上找一找</h3><details><summary>“恩典”在哪里？</summary><p>耶稣先停下来、抬头、叫他的名字，说“今天我必住在你家里”。撒该什么都还没做。</p></details><details><summary>“认识自己的罪”在哪里？</summary><p>“我若讹诈了谁……”他自己说出了那个词：讹诈。</p></details><details><summary>“离开罪归向神”在哪里？</summary><p>他“站着对主说”。他不再对着钱说话，而是对着主说话。</p></details><details><summary>“新的顺服”在哪里？</summary><p>一半给穷人，讹诈的还四倍。悔改是看得见的。</p></details><div class="ask">小禾这一周，哪一天最像“悔改”？</div>`,
+`<h3>背一背（点横线看答案）</h3><div class="qa"><div class="q">问：什么是得生命的悔改？</div><p class="a">答：得生命的悔改是一种<span class="blank" role="button" tabindex="0">救人的恩典</span>；罪人借此真正<span class="blank" role="button" tabindex="0">认识自己的罪</span>，又领会神在基督里的<span class="blank" role="button" tabindex="0">怜悯</span>，就为自己的罪<span class="blank" role="button" tabindex="0">忧伤、恨恶</span>，<span class="blank" role="button" tabindex="0">离开罪归向神</span>，立定心志，竭力过<span class="blank" role="button" tabindex="0">新的顺服</span>生活。</p></div><p>先完整念两遍，再一个空一个空地填。这周周六线上，我们一起背。</p><div class="kidline" style="font-size:22px">一句话记住：离开罪，归向神。</div>`,
+`<h3>带回家一问</h3><p class="big">有没有一件事，你明知道不对，却一直只说“下次注意”，从来没有真正转身？</p><div class="pray" style="padding:3vh 2vw">“主啊，求你赐我悔改的心：<br>看见自己的罪，也看见你的怜悯。”</div><p style="text-align:center;font-size:16px;color:#6d6580">问答的中文是暂译稿。证明经文：徒 11:18；提后 2:25；诗 51:1-4；珥 2:13；路 15:7,10；耶 31:18-19；帖前 1:9；太 3:8；林后 7:10</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;const sp=n>4?178:196;c.style.transform=`translateX(${k*sp}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));$$('#stage .blank').forEach(b=>b.onclick=()=>b.classList.toggle('show'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>
