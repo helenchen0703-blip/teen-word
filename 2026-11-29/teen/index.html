@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 我看见了 · 青少年版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}.c5{background:linear-gradient(160deg,#e3a93c,#c98a1e)}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.qa{background:#fff;border:2px solid var(--paper2);border-radius:16px;padding:14px 18px;margin:8px 0}.qa .q{font-weight:700;color:#a86f00}.qa .a{font-family:var(--serif);font-size:clamp(22px,2.8vw,28px);line-height:1.75;margin:6px 0 0}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid #c98a1e;color:transparent;cursor:pointer;border-radius:4px;background:#fdf0d3;padding:0 4px;margin:0 2px;user-select:none}.blank.show{color:#1c2a4a;background:#e7f5ec;border-color:var(--teal)}
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.parts div{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:10px 14px;font-size:18px}.parts b{display:block;color:#a86f00}
+.kidline{border:3px dashed #c98a1e;border-radius:14px;padding:10px 16px;font-weight:700;font-size:clamp(24px,3vw,32px);text-align:center;margin:12px 0}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors,.parts{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 11 月 29 日 · 第 27 单元第 1 课</div>
+    <h1>我看见了</h1>
+    <div class="tag">约翰福音 9 章 · <b>从前我是眼瞎的，如今能看见了</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 11/29 周 · U27S1 我看见了。/*{{PAINTER}}*/ /*{{PAINTING}}*/ /*{{STORYVID}}*/ 由 build.py 按版本替换。本周四张卡片（小要理问答 12 月开始）
+const EYE='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 50c12-18 26-27 40-27s28 9 40 27c-12 18-26 27-40 27S22 68 10 50z"/><circle cx="50" cy="50" r="12"/><path d="M50 10v6M26 18l3 5M74 18l-3 5"/></svg>';
+const LAMP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M38 16h24l8 34H30z"/><path d="M50 50v28"/><path d="M34 86h32"/><path d="M18 30l-8-4M82 30l8-4M14 48H6M86 48h8"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/duccio-blind.jpg" alt="">',d:'杜乔《医治生来瞎眼的人》：同一个人，在画里出现了两次。',slides:[
+`<div class="two wide"><img class="pic" src="assets/duccio-blind.jpg" alt="杜乔《医治生来瞎眼的人》：左边一群人，最前面头上有金色光圈的耶稣伸手摸一个拄着棍子的人的眼睛；右边同一个人站在水池边，仰着头举起手，棍子倒在一旁；背后是一座城，天空是金色的"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/duccio-blind.jpg" alt="杜乔《医治生来瞎眼的人》"><div><h3>找一找</h3>
+<details><summary>耶稣在哪里？祂在做什么？</summary><p>中间头上有金色光圈、披着蓝色外袍的那一位。祂伸出手，正摸着一个人的眼睛。</p></details>
+<details><summary>画里有两个人穿得一模一样，找到了吗？</summary><p>红色短披风、红靴子的那个人，出现了两次。其实是同一个人：中间，他的眼睛还闭着；右边，他在水池边洗完了，仰着头，眼睛睁开了。</p></details>
+<details><summary>两次出现，他手里的东西有什么不一样？</summary><p>中间，他紧紧拄着探路的棍子；右边，棍子已经倒在一边，他用不着了，空出来的手举了起来。</p></details>
+<details><summary>他腰上挂着一个小东西，猜猜是什么？</summary><p>一个小罐子。他是靠讨饭过日子的。</p></details>
+<details><summary>左边那一大群人是谁？他们在看谁？</summary><p>是门徒。他们挤在耶稣身后，都盯着这个人看。他们刚刚才问过：“是谁犯了罪？”</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/duccio-blind.jpg" alt="杜乔《医治生来瞎眼的人》"><div><h3>一幅画，两个时刻</h3><p class="big">七百年前没有电影，画家就把“之前”和“之后”画在同一幅画里。</p><p>从左往右看，就像看两格连环画：先是耶稣的手，然后是一双睁开的眼睛。</p><details><summary>睁开眼睛以后，他最先朝哪里看？</summary><p>朝上看。他这辈子看见的第一样东西，是光。</p></details><details><summary>画里的天空为什么是金色的？</summary><p>那个时代的画家，用真的金箔来画天空，表示这是神在做事的地方。</p></details><div class="ask">如果你一生下来就看不见，今天忽然看见了，你最想先看什么？</div></div></div>`,
+`<h3>关于这幅画</h3><p class="big">《医治生来瞎眼的人》</p><p>杜乔（Duccio di Buoninsegna，约 1255–1319）· 约 1308–1311 年 · 木板蛋彩画 · 藏于伦敦国家美术馆。</p><p>杜乔是意大利锡耶纳城的画家。这幅小画原来不是单独的一幅，而是一座巨大祭坛画《宝座圣母》的一小块，那座祭坛画正面背面一共画了几十个圣经故事。</p><p>1311 年祭坛画完成的那一天，相传全城的店铺都关了门，人们敲着钟，排着长队，把它从画室一路抬进了大教堂。</p><p>几百年以后，这座祭坛画被锯开了，一块块小画流散到世界各地。这一块，现在在伦敦。</p><div class="ask">这块小画原来的位置，紧挨着另一幅“耶稣在山上变了形像、脸面发光”的画。有人说，画里睁开眼睛的人，正朝着那道光看。你觉得画家想说什么？</div>`,
+]},
+{n:2,t:'本周课程图片',c:'c2',col:'#7b5cd6',tm:'看一张图',art:'<img src="assets/lesson-art.jpg" alt="">',d:'泥，抹在一双从来没见过光的眼睛上。',slides:[
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片：一张紫色的脸的特写，眼睛紧紧闭着，三根沾着棕色泥巴的手指正抹在他的眼皮上"><div><h3>你先看到什么？</h3><p class="big">这是谁的脸？谁的手？</p><details><summary>手指上棕色的东西是什么？</summary><p>泥。耶稣吐唾沫在地上，和了泥，抹在这个人的眼睛上。（约 9:6）</p></details><details><summary>这个人的眼睛是睁着还是闭着？</summary><p>闭着。他生下来就看不见，从来没有见过光，也没有见过耶稣的脸。</p></details><details><summary>整张图只有一样东西是暖色的，是什么？</summary><p>那只手。画家把脸画成冷冷的紫色，把耶稣的手画成有温度的颜色。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片"><div><h3>如果泥抹在你的眼睛上</h3><p>泥抹上去的时候，他还是看不见。耶稣只说了一句：“你往西罗亚池子里去洗。”他就摸索着去了，一洗，就看见了。</p><div class="verse">有一件事我知道：从前我是眼瞎的，如今能看见了。<div class="ref">约翰福音 9:25</div></div><p class="big">没有耶稣的帮助，我们看不见关于祂的真相。</p><div class="ask">一个从来没见过耶稣的人，凭一句话就摸着路去洗。如果是你，你会去吗？是什么会让你犹豫？</div></div></div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'特别篇',art:EYE,d:'特别篇《盲点》：安安第一次来团契，小禾发现自己也有“看不见”的地方。',slides:[
+`<h3>小禾的篮子 · 特别篇《盲点》</h3><p class="big">第一季之后：</p><div class="story"><p>外婆走了以后，安安说：“下个星期天，我想跟你去团契。”</p><p>这个星期天，她真的来了，坐在最后一排，听了一个生下来就看不见的人，怎样被耶稣开了眼睛。</p><p>散会的时候，周老师说：“这周我们每天读几节诗篇 139 篇。读的时候问问自己：我有没有什么地方，是看不见的？”</p></div>`,
+`<span class="day">周一 · 诗篇 139:1-6</span><h3>你已经鉴察我，认识我</h3><div class="story"><p>星期一，安安请了一周假以后，回到学校。</p><p>班里好像什么都没变：早读，交作业，课间有人在对月考的答案。没有人问她这一周去了哪儿。前桌回头借了一块橡皮，就转回去了。</p><p>中午在食堂，安安拿筷子戳着米饭，说：“我觉得自己像透明的。少了我一个星期，谁也没发现。”</p><p>我不知道说什么好。晚上读到诗篇，我把第一节抄下来发给她：“耶和华啊，你已经鉴察我，认识我。”又加了一句：“祂发现了。我也发现了。”</p></div><div class="ask">你有没有在一屋子人里，却觉得没人看见你的时候？知道“神看见了”，会有什么不一样？</div>`,
+`<span class="day">周二 · 诗篇 139:7-12</span><h3>黑夜在你面前也是亮的</h3><div class="story"><p>月考卷子发下来了，要家长签字。我的数学只有 71 分，最后一道大题，就是外婆住院那天晚上空着的那一道。</p><p>我把卷子夹进了物理书最后面。妈妈问：“卷子发了吗？”我说：“还没。”</p><p>晚上读到：“我往哪里逃，躲避你的面？”我盯着书包看了很久。周日的课上，耶稣说：“我是世上的光。”光一照，藏着的东西就藏不住了。</p><p>我把卷子抽出来，拿到客厅。妈妈看了分数，又看了看我，说：“那天晚上你在医院陪安安，对吧。”她签了字，在旁边写了四个字：“下次补上。”</p></div><div class="ask">你有没有一件藏着、不想让人知道的事？被光照到，是可怕的事，还是让人松一口气的事？</div>`,
+`<span class="day">周三 · 诗篇 139:13-16</span><h3>我受造，奇妙可畏</h3><div class="story"><p>年级的光荣榜贴出来了，在一楼大厅，红底金字。前五十名里没有我。</p><p>班级群里，有人晒钢琴十级的证书，有人晒奥数的奖状。我翻了翻自己的相册，只有一本画得乱七八糟的速写本。我把手机扣在了桌上。</p><p>第二天我跟安安说：“我好像什么都不够好。”</p><p>安安说：“你知道吗，你画的那张饭桌，外婆一直放在床头，到最后都没让人拿走。”</p><p>我晚上又读了一遍：“我受造，奇妙可畏。”原来那个生来瞎眼的人，大家都说他是“有问题的”，耶稣却说：是要在他身上显出神的作为来。</p></div><div class="ask">你最常拿自己的哪一点跟别人比？神说你是祂“特意”造的，这句话你信几分？</div>`,
+`<span class="day">周四 · 诗篇 139:23-24</span><h3>盲点</h3><div class="story"><p>生物课讲眼睛。老师说，每个人的眼睛里都有一个“盲点”，那里什么也看不见，可是我们从来不觉得，因为大脑会自己把画面补上。</p><p>下午班会，孙老师让大家写一张纸条：“写出我们班一位同学的一个优点。”我抽到的名字是：陈默。</p><p>我愣住了。我知道他是谁：第一排那个最矮的男生，每天拿着一个黑色小本子记名字。可是开学三个月，我从来没叫过他的名字。大家都叫他“记名机”，我也是。</p><p>我对着那张纸条，一个优点也写不出来。不是他没有，是我从来没看过。</p><p>晚上的经文是：“神啊，求你鉴察我……看在我里面有什么恶行没有。”我以为自己什么都看得见。原来我也有盲点。</p></div><div class="ask">法利赛人眼睛是好的，却看不见耶稣。你觉得自己可能有什么“盲点”：一个你从没注意过的人，或一个你不肯承认的毛病？</div>`,
+`<span class="day">周五 · 哥林多后书 4:1-6</span><h3>把光带出去</h3><div class="story"><p>星期五放学，安安说：“我妈问，圣诞节那个表演，她能不能也来看。”我差点在校门口跳起来。</p><p>安安又说：“以前你跟我讲耶稣，我一句也听不进去。现在好像……能看见一点了。是你把灯举着的。”</p><p>我说：“不是我。是有人先给我开了灯。”</p><p>回家的路上，我想起那张还没写的纸条。我在速写本上写了一行字：</p><p class="big">“下星期一，先叫他的名字。”</p></div><div class="ask">保罗说，我们是“带光的人”。这一周，你可以把光带给谁？（一个伤心的人、一个没人注意的人、一个还不认识耶稣的家人……）</div>`,
+`<h3>下一集 · 第二季开始</h3><div class="story"><p>初二（3）班第一排，那个拿着黑色小本子的男生。全班没有人叫他的名字。</p><p>星期一午休，小禾跟安安说了一句话，就一句。下午班会，孙老师念名单：“林小禾，午休说话，扣一分。”</p></div><p class="big">第二季《记名本》· 第 5 集《树上的人》</p><div class="ask">这一集里，哪一天最像你这一周的样子？</div>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:LAMP,d:'看得见的人看不见，看不见的人看见了。',slides:[
+`<h3>谁才是瞎眼的？</h3><p class="big">这一章里有两种“看不见”。</p><details><summary>那个讨饭的人，一开始看不见什么？后来呢？</summary><p>他生来眼睛看不见。耶稣开了他的眼睛，后来他还认出了耶稣是谁，说：“主啊，我信！”就拜祂。（约 9:38）</p></details><details><summary>法利赛人看不见什么？</summary><p>他们眼睛是好的，圣经也背得很熟，神迹就发生在眼前，却看不见耶稣是谁。</p></details><details><summary>门徒看不见什么？</summary><p>他们看见一个瞎子，只想问“是谁犯了罪”。耶稣看见的，是一个神要在他身上做事的人。</p></details><div class="ask">有没有一件事，你以前“看不见”，后来突然明白了？是什么让你明白的？</div>`,
+`<h3>有一件事我知道</h3><div class="anchors"><div>耶稣先看见他</div><div>他照着话去洗</div><div>他只说自己知道的</div></div><p class="big">法利赛人问了他一大堆难题，他答不上来。他只说了一句：</p><div class="verse">他是个罪人不是，我不知道；有一件事我知道：从前我是眼瞎的，如今能看见了。<div class="ref">约翰福音 9:25</div></div><div class="ask">讲耶稣，不用什么都懂。如果只说“一件我知道的事”，你会说什么？</div>`,
+`<h3>这周在学校，你可以这样做</h3><p>选一个，或者自己想一个。不用告诉别人。</p><div class="steps">${['留意一个请假回来的同学，问一句“你还好吗”','把藏着的卷子或心事，拿给爸妈看','不拿自己跟光荣榜、朋友圈比','想一想：班里谁的名字我从没叫过','祷告：“神啊，求你让我看见我的盲点”','跟一个人说一件“我知道的事”'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，你是世上的光。<br>求你开我的眼睛，<br>让我看见你，<br>也看见你放在我身边的人。”</div><p style="text-align:center">这周金句：有一件事我知道：从前我是眼瞎的，如今能看见了。（约翰福音 9:25）</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;const sp=n>4?178:196;c.style.transform=`translateX(${k*sp}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));$$('#stage .blank').forEach(b=>b.onclick=()=>b.classList.toggle('show'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>

@@ -5,6 +5,7 @@
 | 日期 | 课程 | 儿童版 | 青少年版 |
 |---|---|---|---|
 | 12 月 6 日 | 寻找拯救失丧的人 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-06/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-06/teen/) |
+| 11 月 29 日 | 我看见了 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-29/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-29/teen/) |
 | 11 月 22 日 | 复活和生命 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-22/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-22/teen/) |
 | 11 月 15 日 | 桌子底下的碎渣儿 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-15/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-15/teen/) |
 | 11 月 8 日 | 在海面上行走 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-08/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-08/teen/) |
