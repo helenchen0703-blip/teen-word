@@ -4,6 +4,7 @@
 
 | 日期 | 课程 | 儿童版 | 青少年版 |
 |---|---|---|---|
+| 12 月 13 日 | 石头也要呼叫 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-13/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-13/teen/) |
 | 12 月 6 日 | 寻找拯救失丧的人 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-06/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-12-06/teen/) |
 | 11 月 29 日 | 我看见了 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-29/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-29/teen/) |
 | 11 月 22 日 | 复活和生命 | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-22/kids/) | [打开](https://helenchen0703-blip.github.io/teen-word/2026-11-22/teen/) |

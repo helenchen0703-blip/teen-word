@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 石头也要呼叫 · 青少年版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}.c5{background:linear-gradient(160deg,#e3a93c,#c98a1e)}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.qa{background:#fff;border:2px solid var(--paper2);border-radius:16px;padding:14px 18px;margin:8px 0}.qa .q{font-weight:700;color:#a86f00}.qa .a{font-family:var(--serif);font-size:clamp(22px,2.8vw,28px);line-height:1.75;margin:6px 0 0}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid #c98a1e;color:transparent;cursor:pointer;border-radius:4px;background:#fdf0d3;padding:0 4px;margin:0 2px;user-select:none}.blank.show{color:#1c2a4a;background:#e7f5ec;border-color:var(--teal)}
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.parts div{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:10px 14px;font-size:18px}.parts b{display:block;color:#a86f00}
+.kidline{border:3px dashed #c98a1e;border-radius:14px;padding:10px 16px;font-weight:700;font-size:clamp(24px,3vw,32px);text-align:center;margin:12px 0}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors,.parts{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 12 月 13 日 · 第 27 单元第 3 课</div>
+    <h1>石头也要呼叫</h1>
+    <div class="tag">路加福音 19:28-44 · <b>奉主名来的王是应当称颂的</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 12/13 周 · U27S3 石头也要呼叫。/*{{PAINTER}}*/ /*{{PAINTING}}*/ /*{{STORYVID}}*/ /*{{WSC}}*/ 由 build.py 按版本替换
+const MIC='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="38" y="12" width="24" height="42" rx="12"/><path d="M26 44c0 14 10 24 24 24s24-10 24-24"/><path d="M50 68v18M34 88h32"/><path d="M12 30l8 6M88 30l-8 6M10 52h9M90 52h-9"/></svg>';
+const CROWN='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 72 12 32l22 18 16-28 16 28 22-18-4 40z"/><path d="M16 84h68"/><circle cx="50" cy="60" r="4" fill="#fff"/></svg>';
+const BOOK='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 26c-10-8-22-8-34-4v54c12-4 24-4 34 4 10-8 22-8 34-4V22c-12-4-24-4-34 4z"/><path d="M50 26v54"/><path d="M40 12c0-4 20-4 20 0"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/giotto-entry.jpg" alt="">',d:'乔托《进入耶路撒冷》：画面正中间，是一头驴。',slides:[
+`<div class="two wide"><img class="pic" src="assets/giotto-entry.jpg" alt="乔托《进入耶路撒冷》：蓝色的天空下，耶稣骑着一头驴从左边走来，身后跟着一群门徒；右边城门口挤着迎接的人，有人把衣服铺在地上；后面有人爬在树上"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/giotto-entry.jpg" alt="乔托《进入耶路撒冷》"><div><h3>找一找</h3>
+<details><summary>耶稣骑的是什么？祂的手在做什么？</summary><p>一头驴，不是高头大马。祂举起右手，像是在祝福迎面来的人。</p></details>
+<details><summary>祂身后跟着的是谁？</summary><p>门徒。他们挤在一起，头上都有金色的光圈。</p></details>
+<details><summary>城门口的人在忙什么？</summary><p>有人把衣服铺在驴要走的路上；还有人正把衣服从头上往下脱，脸都被蒙住了。乔托把“脱衣服”这个动作，一格一格地画了出来。</p></details>
+<details><summary>往后面看：树上有什么？</summary><p>有人爬到了树上，在折树枝。上个星期，也有一个人爬到了树上，他叫什么名字？</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/giotto-entry.jpg" alt="乔托《进入耶路撒冷》"><div><h3>画面的正中间是谁？</h3><p class="big">不是耶稣，是那头驴。</p><p>七百年前，画家画“王”，通常要画宝座、金冠、战马。乔托却把一头低着头的驴，放在了整幅画最显眼的地方。</p><div class="verse">看哪，你的王来到你这里！他是公义的，并且施行拯救，谦谦和和地骑着驴。<div class="ref">撒迦利亚书 9:9</div></div><div class="ask">人群迎接的是一位“王”。可是这位王，和他们心里想的那种王，哪里不一样？</div></div></div>`,
+`<h3>关于这幅画</h3><p class="big">《进入耶路撒冷》</p><p>乔托（Giotto di Bondone，约 1267–1337）· 约 1305 年 · 湿壁画 · 意大利帕多瓦，斯克罗维尼礼拜堂。</p><p>在乔托以前，画里的人常常是扁平的，像贴在金色背景上的纸片。乔托让人有了重量，有了表情，站在真实的蓝天底下。后来的人说，文艺复兴是从他这里开始的。</p><p>这座礼拜堂是一个叫斯克罗维尼的银行家出钱建的。他的父亲靠放高利贷发了大财，名声很坏。一般认为，他建这座礼拜堂，是想为父亲、也为自己赎罪。</p><div class="ask">上周的撒该是税吏，这周出钱的是放高利贷人家的儿子。一个因为钱而出名的家庭，请人把耶稣的一生画满了整面墙。你觉得他最想让人看见的是哪一幅？</div>`,
+]},
+{n:2,t:'本周课程图片',c:'c2',col:'#7b5cd6',tm:'看一张图',art:'<img src="assets/lesson-art.jpg" alt="">',d:'全城都在欢呼的那一天，王哭了。',slides:[
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片：右边是一个人的侧脸，灰色的，低着头，用手捂着嘴，眼泪从闭着的眼睛里流下来；左下方远处是一座蓝色的城，最前面是有围墙和高楼的圣殿"><div><h3>你先看到什么？</h3><p class="big">这张图里，最大的是什么？最亮的是什么？</p><details><summary>找一找：右边这个人是谁？他在做什么？</summary><p>耶稣。祂低着头，用手捂着嘴，眼泪正顺着脸流下来。</p></details><details><summary>祂在看哪里？</summary><p>山下那座蓝色的城：耶路撒冷。最前面带围墙的大建筑，是圣殿。</p></details><details><summary>图里有欢呼的人群吗？有棕树枝吗？</summary><p>都没有。画家没有画热闹的进城，只画了进城路上的这一刻。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/lesson-art.jpg" alt="课程图片"><div><h3>王为什么哭？</h3><p>几分钟以前，门徒还在大声赞美，有人把衣服铺在路上。可是耶稣快到城边的时候，看见这座城，就哭了。</p><div class="verse">巴不得你在这日子知道关系你平安的事；无奈这事现在是隐藏的，叫你的眼看不出来。<div class="ref">路加福音 19:42</div></div><p class="big">耶稣是我们真正的王，配得我们一切的赞美。</p><div class="ask">被人欢呼的时候，耶稣想的不是自己多风光，而是这些人会不会错过祂。你觉得，祂今天看着我们这座城市，会是什么表情？</div></div></div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'第二季 · 第 6 集',art:MIC,d:'元旦联欢会选主持人，全班只喊一个名字。',slides:[
+`<h3>小禾的篮子 · 第二季《记名本》</h3><p class="big">上一集：</p><div class="story"><p>初二（3）班的纪律委员陈默，拿着一个黑色小本子记名字，全班叫他“记名机”，没有人跟他一起吃饭。</p><p>体育课分组，小禾第一次喊了他的名字：“陈默，来我们组。”有人把他的本子藏了起来，小禾悄悄捡回来，放回他的桌斗。星期五，她和安安端着餐盘，坐到了他对面。</p><p>陈默问：“你为什么叫我的名字？”小禾说：“因为有一个人，先这样叫了我。”</p></div><p>第 6 集《欢呼声》</p>`,
+`<span class="day">周一 · 撒迦利亚书 9:9</span><h3>骑着驴来的王</h3><div class="story"><p>星期一班会，孙老师说：“12 月 31 号下午开元旦联欢会，先选个主持人……”</p><p>话还没说完，后排已经拍起了桌子：“赵一鸣！赵一鸣！”他篮球打得好，会讲段子，上去准不冷场。我也跟着喊了，喊得挺大声。</p><p>孙老师在黑板上写分工：主持，赵一鸣；节目，文艺委员；最后一行：“搬桌椅、贴拉花、管音响，陈默。”没有人鼓掌，也没有人回头看他。</p><p>昨天周老师讲，王进城，骑的不是战马，是一头小驴。</p></div><div class="ask">打了胜仗的王骑战马，带着和平来的王骑驴。耶稣选了驴。这告诉你，祂是一位什么样的王？</div>`,
+`<span class="day">周二 · 以赛亚书 55:8-9</span><h3>我的道路高过你们的道路</h3><div class="story"><p>星期二放学，孙老师叫住陈默：“去三楼储物间，把那个旧音箱搬下来。”</p><p>学校上个月刚给每个班配了新的蓝牙音箱，又轻又响。那个旧的，黑乎乎一大个，线都缠成了一团。赵一鸣笑：“搬那个古董干吗？”</p><p>陈默一个人搬不动。我和安安一人抬一边，从三楼一级一级挪下来，手上全是灰。安安问：“孙老师要它干什么？”</p><p>陈默擦了擦汗：“不知道。孙老师说的，照做就是了。”</p><p>我想起那两个去牵驴的门徒。他们大概也是一头雾水。</p></div><div class="ask">门徒听不懂“去牵一匹驴驹来”，可他们照做了。有没有一件事，你不太明白神为什么这样安排？你能在哪一点上先信祂？</div>`,
+`<span class="day">周三 · 诗篇 24:7-10</span><h3>荣耀的王是谁呢？</h3><div class="story"><p>星期三课后服务，第一次彩排。赵一鸣给自己挑了一段出场音乐，鼓点一响，他从后门一路击掌走上讲台。</p><p>全班都疯了。有人站到了椅子上，有人拿卷起来的卷子当荧光棒。我嗓子都喊哑了。</p><p>回家路上，安安忽然说：“你今天喊得比星期天唱诗的时候大声多了。”</p><p>我想反驳，没说出口。星期天唱“荣耀的王将要进来”的时候，我在想中午吃什么。</p></div><div class="ask">如果耶稣有一首“出场曲”，诗篇 24 篇就是。什么人、什么事，最容易让你大声欢呼？你为耶稣这样欢呼过吗？</div>`,
+`<span class="day">周四 · 彼得后书 3:9</span><h3>祂看见城，就为它哀哭</h3><div class="story"><p>星期四，年级主任来审节目。赵一鸣一摸口袋，脸白了：存伴奏的 U 盘忘在了家里。新音箱也怎么都连不上，台上干站了三分钟。年级主任说：“三班，回去重排。”</p><p>还没放学，小群里就炸了：“早知道不选他”“就会耍帅”“丢人丢到全年级”。昨天站在椅子上喊的，和今天骂得最凶的，是同一拨人。里面也差一点有我。</p><p>我从窗户看出去，赵一鸣一个人坐在操场的看台上。</p><p>那天晚上，陈默把旧音箱的线一根一根理顺，插上，响了。他又在家里的电脑上，把伴奏重新剪了一遍，剪到十一点多。</p><p>我想起那群星期天喊“和散那”的人。耶稣知道他们过几天会喊什么。祂没有骂他们。祂哭了。</p></div><div class="ask">欢呼变成埋怨，只用了一天。耶稣知道人会变，却没有发火，而是“宽容”，等人回头。你觉得祂在等你什么？</div>`,
+`<span class="day">周五 · 以赛亚书 55:1-7</span><h3>你们都来</h3><div class="story"><p>星期五第二次审查，旧音箱声音又稳又大，节目一遍就过了。</p><p>孙老师问：“音响是谁弄好的？”全班你看我，我看你。陈默低着头理线，没有举手。赵一鸣张了张嘴，也没出声。</p><p>放学的时候，我追上陈默：“下下个星期天，12 月 20 号，我们教会有圣诞哑剧。你来吗？安安也去。”</p><p>他停了一下：“我没去过教堂。”</p><p>我说：“我第一次去，也坐的最后一排。”</p><p>他没说去，也没说不去。只是把书包带往上提了提。</p></div><div class="ask">神说：“没有银钱的也可以来。”这个邀请不看你有没有人缘、有没有成绩。这周，你可以把这个“来”转给谁？</div>`,
+`<h3>下一集</h3><div class="story"><p>12 月 24 号，星期四，照常上课，照常留作业。可是一大早，教室里每张桌子上都在冒出包着彩纸的苹果。</p><p class="big">只有第一排那张桌子，是空的。</p></div><p>第 7 集《住在我们中间》</p><div class="ask">这一集里，谁最像“骑着驴的人”？为什么？</div>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:CROWN,d:'我欢呼的，是哪一位王？',slides:[
+`<h3>人群想要的王</h3><p class="big">同一条路，同一群人，同一个星期。</p><details><summary>人群为什么欢呼？</summary><p>因为“所见过的一切异能”（路 19:37）。很多人盼望的，是一位能赶走罗马人、让他们扬眉吐气的王。</p></details><details><summary>耶稣骑的是什么？这说明什么？</summary><p>一匹从来没有人骑过的驴驹。祂来不是打仗，是带来和平，应验了撒迦利亚书 9:9。</p></details><details><summary>法利赛人叫耶稣让门徒闭嘴，耶稣怎么说？</summary><p>“若是他们闭口不说，这些石头必要呼叫起来。”（路 19:40）祂配得赞美，这件事不靠人群的心情。</p></details><div class="ask">如果耶稣没有给人群他们想要的，他们还会欢呼吗？如果耶稣没有给你想要的呢？</div>`,
+`<h3>耶稣是怎样的王</h3><div class="anchors"><div>骑驴，不骑战马</div><div>看见城，就哭了</div><div>走向十字架</div></div><p class="big">祂要打败的不是罗马兵，是罪和死亡。祂得胜的方法，是替我们死。</p><div class="verse">奉主名来的王是应当称颂的！在天上有和平；在至高之处有荣光！<div class="ref">路加福音 19:38</div></div><div class="ask">我赞美耶稣，是因为祂是谁，还是因为祂能给我想要的？诚实地给自己打个分。</div>`,
+`<h3>这周在学校，你可以这样做</h3><p>选一个，或者自己想一个。不用告诉别人。</p><div class="steps">${['谢谢一个做了“没人看见的活”的人','群里一边倒骂一个人的时候，我不跟','有人搞砸了，去陪他坐一会儿','别人夸我，在心里说一句“谢谢主”','老师的安排我不懂，先照做再问','星期天唱诗，用喊偶像的力气唱'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，你是骑着驴来的王。<br>你配得我一切的赞美，<br>不管你有没有给我想要的。<br>求你管理我的心。”</div><p style="text-align:center">这周金句：奉主名来的王是应当称颂的！在天上有和平；在至高之处有荣光！（路加福音 19:38）</p>`]},
+{n:5,t:'小要理问答',c:'c5',col:'#c98a1e',tm:'第 26 问',art:BOOK,d:'基督怎样作王？骑着驴的那一位，做给我们看了。',slides:[
+`<h3>先复习上周</h3><div class="qa"><div class="q">第 87 问：什么是得生命的悔改？</div><p class="a">一句话记住：<span class="blank" role="button" tabindex="0">离开</span>罪，<span class="blank" role="button" tabindex="0">归向</span>神。</p></div><p>上周，撒该从树上下来，转了身。这周，我们看他转向的那一位，是怎样的王。</p><div class="qa"><div class="q">这周 · 第 26 问</div><p class="a">基督怎样执行君王的职分？</p></div><div class="ask">先别翻页。说到“王”，你最先想到什么？王每天都在做什么？</div>`,
+`<h3>第 26 问</h3><div class="qa"><div class="q">问：基督怎样执行君王的职分？</div><p class="a">答：基督执行君王的职分，是使我们归服祂，治理我们、保护我们，并且抑制、战胜祂和我们一切的仇敌。</p></div><p style="font-size:16px;color:#6d6580">Q. 26. How doth Christ execute the office of a king? — A. Christ executeth the office of a king, in subduing us to himself, in ruling and defending us, and in restraining and conquering all his and our enemies.</p>`,
+`<h3>一句一句拆开看</h3><div class="parts"><div><b>使我们归服祂</b>祂不是逼人投降，而是赢得人心：“当你掌权的日子，你的民要甘心牺牲自己。”（诗 110:3）</div><div><b>治理我们</b>王说了算：祂的话，就是我们生活的规矩。</div><div><b>保护我们</b>属祂的人，谁也不能从祂手里夺去。</div><div><b>战胜一切仇敌</b>最大的仇敌不是罗马兵，而是罪和死亡：“尽末了所毁灭的仇敌就是死。”（林前 15:26）</div></div>`,
+`<h3>在这一课里找一找</h3><details><summary>“使我们归服祂”在哪里？</summary><p>没有人拿刀逼着门徒。他们自己把衣服搭在驴上、铺在路上，大声赞美神（路 19:35-37）。</p></details><details><summary>“治理我们”在哪里？</summary><p>“主要用它。”一句话，驴驹的主人就放了手；门徒照着去做，事情就成了（路 19:31-34）。</p></details><details><summary>“保护我们”在哪里？</summary><p>法利赛人要门徒闭嘴，耶稣挡在前面：“若是他们闭口不说，这些石头必要呼叫起来。”</p></details><details><summary>“战胜仇敌”在哪里？</summary><p>祂进城，是走向十字架。几天以后，祂用死和复活，打败了罪和死亡。</p></details><div class="ask">小禾班上的人，这一周把谁当成了“王”？结果呢？</div>`,
+`<h3>背一背（点横线看答案）</h3><div class="qa"><div class="q">问：基督怎样执行君王的职分？</div><p class="a">答：基督执行君王的职分，是使我们<span class="blank" role="button" tabindex="0">归服祂</span>，<span class="blank" role="button" tabindex="0">治理</span>我们、<span class="blank" role="button" tabindex="0">保护</span>我们，并且抑制、<span class="blank" role="button" tabindex="0">战胜</span>祂和我们一切的<span class="blank" role="button" tabindex="0">仇敌</span>。</p></div><p>先完整念两遍，再一个空一个空地填。这周周六线上，我们一起背。</p><div class="kidline" style="font-size:22px">一句话记住：耶稣是王：管理我们，保护我们，战胜仇敌。</div>`,
+`<h3>带回家一问</h3><p class="big">在你的生活里，有没有哪一块是你还不想让耶稣“管”的？</p><div class="pray" style="padding:3vh 2vw">“主耶稣，你是我的王。<br>求你管理我，保护我，<br>也胜过我里面的罪。”</div><p style="text-align:center;font-size:16px;color:#6d6580">问答的中文是暂译稿。证明经文：诗 110:3；太 28:18-20；约 17:2；西 1:13；诗 2:6-9；诗 110:1-2；太 12:28；林前 15:24-26；西 2:15</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;const sp=n>4?178:196;c.style.transform=`translateX(${k*sp}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));$$('#stage .blank').forEach(b=>b.onclick=()=>b.classList.toggle('show'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>
