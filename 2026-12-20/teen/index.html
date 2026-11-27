@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>话语 · 道成了肉身 · 青少年版</title>
+<style>
+:root{--night:#10182f;--night2:#1c2a4a;--paper:#fbf4e4;--paper2:#e9dfc8;--ink:#2a2140;--muted:#a9b2cf;--gold:#f2c14e;--coral:#ef7a5a;--teal:#2fa59a;--violet:#7b5cd6;--sky:#3f8fd8;--sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--serif:"Songti SC","Noto Serif SC",serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 0,#2c3f68 0,var(--night) 62%) fixed;color:var(--paper);font-family:var(--sans);font-size:20px;line-height:1.7;overflow-x:hidden}
+button{font:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app{min-height:100%;padding:18px 16px 28px}
+.hub{max-width:1120px;margin:0 auto;text-align:center}
+.eyebrow{letter-spacing:.3em;font-size:15px;color:var(--muted);margin-top:6px}
+.hub h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);line-height:1.15;margin:8px 0 2px}
+.tag{font-size:20px;color:var(--paper2)}.tag b{color:var(--gold)}
+.fan{position:relative;height:410px;margin:22px auto 0;max-width:1000px}
+.rcard{position:absolute;left:50%;bottom:16px;width:210px;height:310px;margin-left:-105px;border:5px solid var(--paper);border-radius:22px;padding:0;color:#fff;overflow:hidden;transform-origin:50% 120%;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;box-shadow:0 14px 30px rgba(0,0,0,.45);text-align:center}
+.rcard .art{position:absolute;inset:40px 12px 92px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.rcard .art img{width:100%;height:100%;object-fit:cover}.rcard .art svg{width:76%;height:76%}
+.rcard .n{position:absolute;top:6px;left:14px;font-size:22px;font-weight:700}
+.rcard h3{position:absolute;left:8px;right:8px;bottom:34px;margin:0;font-size:23px;line-height:1.2}
+.rcard .tm{position:absolute;left:0;right:0;bottom:10px;font-size:14px;opacity:.95}
+.rcard:hover,.rcard.sel{box-shadow:0 0 0 4px var(--gold),0 22px 40px rgba(0,0,0,.55)}
+.c1{background:linear-gradient(160deg,#f2906a,var(--coral))}.c2{background:linear-gradient(160deg,#9479ec,var(--violet))}.c3{background:linear-gradient(160deg,#3fbfb0,var(--teal))}.c4{background:linear-gradient(160deg,#5aa6ea,var(--sky))}.c5{background:linear-gradient(160deg,#e3a93c,#c98a1e)}
+.info{display:flex;gap:16px;align-items:center;text-align:left;max-width:820px;margin:0 auto;background:rgba(16,24,47,.72);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:12px 16px}
+.info .txt{flex:1;min-width:0}.info h4{font-size:24px;margin:0}.info p{margin:2px 0 0;color:var(--paper2);font-size:16px;line-height:1.5}
+.enter{border:none;background:var(--gold);color:var(--ink);font-weight:700;font-size:21px;border-radius:14px;padding:10px 20px;white-space:nowrap}
+.keys{color:var(--muted);font-size:14px;margin-top:12px}
+.deck{max-width:1080px;margin:0 auto;display:none}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-weight:700;border-radius:999px;padding:4px 14px;color:#fff;font-size:16px}
+.bar h2{font-size:24px;margin:0 auto 0 0}
+.ghost{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:var(--paper);border-radius:999px;padding:5px 16px;font-size:15px;font-weight:700}
+.stage{background:var(--paper);color:var(--ink);border-radius:22px;padding:clamp(18px,3vw,36px);min-height:min(70vh,620px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.stage h3{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:0 0 10px;color:#1c2a4a}
+.stage p{margin:0 0 12px}.vid{width:100%;max-height:68vh;aspect-ratio:16/9;border-radius:12px;display:block;background:#000;margin:6px auto 0}
+.big{font-size:clamp(24px,3.2vw,32px);line-height:1.6;font-weight:600}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:start}
+.two.wide{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}
+.pic{width:100%;max-height:62vh;object-fit:contain;border-radius:12px;display:block;cursor:zoom-in;background:#0b1020}
+details{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:9px 14px;margin:0 0 10px}
+summary{font-weight:700;cursor:pointer}details p{margin:6px 0 2px;color:#4b4258;font-size:18px}
+.verse{background:#eef3f6;border-radius:12px;padding:10px 16px;font-family:var(--serif);margin:10px 0}
+.verse sup{color:var(--coral);font-weight:700;font-family:var(--sans)}
+.ref{color:#6d6580;font-size:16px;margin-top:4px}
+.day{display:inline-block;background:var(--teal);color:#fff;border-radius:999px;padding:2px 14px;font-size:16px;font-weight:700;margin-bottom:6px}
+.story p{font-size:clamp(19px,2.2vw,22px);line-height:1.85;margin-bottom:10px}
+.ask{background:#fdf0d3;border-radius:12px;padding:9px 16px;font-weight:600;margin-top:12px}
+.ask::before{content:"想一想 · ";color:#a86f00}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.pickb{background:#fff;color:var(--ink);border:2px solid var(--paper2);border-radius:14px;padding:12px;font-size:18px;font-weight:600;text-align:left;min-height:74px}
+.pickb.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.anchors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.anchors div{background:#1c2a4a;color:#fff;border-radius:14px;padding:18px 14px;font-weight:700;text-align:center;font-size:22px}
+.qa{background:#fff;border:2px solid var(--paper2);border-radius:16px;padding:14px 18px;margin:8px 0}.qa .q{font-weight:700;color:#a86f00}.qa .a{font-family:var(--serif);font-size:clamp(22px,2.8vw,28px);line-height:1.75;margin:6px 0 0}
+.blank{display:inline-block;min-width:3.2em;border-bottom:3px solid #c98a1e;color:transparent;cursor:pointer;border-radius:4px;background:#fdf0d3;padding:0 4px;margin:0 2px;user-select:none}.blank.show{color:#1c2a4a;background:#e7f5ec;border-color:var(--teal)}
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.parts div{background:#fff;border:2px solid var(--paper2);border-radius:14px;padding:10px 14px;font-size:18px}.parts b{display:block;color:#a86f00}
+.kidline{border:3px dashed #c98a1e;border-radius:14px;padding:10px 16px;font-weight:700;font-size:clamp(24px,3vw,32px);text-align:center;margin:12px 0}
+.pray{font-family:var(--serif);font-size:clamp(26px,3.6vw,38px);line-height:1.6;text-align:center;padding:6vh 2vw}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.nav button{background:var(--gold);color:var(--ink);border:none;border-radius:12px;padding:8px 20px;font-weight:700}.nav button:disabled{opacity:.35;cursor:default}
+.dots{color:var(--muted);font-size:16px}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}.zoom img{max-width:96vw;max-height:96vh}
+@media(max-width:760px){.fan{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}.rcard{position:relative;left:auto;bottom:auto;margin:0;width:100%;height:240px;transform:none!important}.rcard .art{inset:36px 10px 74px}.rcard h3{font-size:19px;bottom:28px}.two,.two.wide,.steps,.anchors,.parts{grid-template-columns:1fr}.info{flex-wrap:wrap}}
+</style></head><body>
+<div class="app">
+  <section class="hub" id="hub">
+    <div class="eyebrow">话语 · 12 月 20 日 · 圣诞周</div>
+    <h1>道成了肉身</h1>
+    <div class="tag">约翰福音 1:14 · <b>道成了肉身，住在我们中间</b></div>
+    <div class="fan" id="fan"></div>
+    <div class="info"><div class="txt"><h4 id="ih"></h4><p id="ip"></p></div><button class="enter" id="enter">进入</button></div>
+    <div class="keys">← → 选择或翻页 · Enter 进入 · Esc 回到选关 · 点图片可放大</div>
+  </section>
+  <section class="deck" id="deck">
+    <div class="bar"><span class="chip" id="dchip"></span><h2 id="dtitle"></h2><button class="ghost" id="back">回到选关</button></div>
+    <div class="stage" id="stage"></div>
+    <div class="nav"><button id="prev">← 上一页</button><span class="dots" id="dots"></span><button id="next">下一页 →</button></div>
+  </section>
+</div>
+<div class="zoom" id="zoom"><img alt="放大的图片" id="zimg"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const BOAT='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 12v50"/><path d="M50 16 76 56H50"/><path d="M18 64h64l-10 16H28z"/><path d="M8 90c8-6 14-6 21 0s14 6 21 0 14-6 21 0 14 6 21 0"/></svg>';
+const STEP='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 16c-10 0-16 12-14 26 1 8 4 12 4 18h20c0-8 6-12 6-24 0-12-6-20-16-20z"/><path d="M24 72h19c1 10-3 16-10 16s-10-7-9-16z"/><path d="M68 34c10 0 16 12 14 26-1 8-4 12-4 18H58c0-8-6-12-6-24 0-12 6-20 16-20z" transform="translate(0 -14)"/></svg>';
+const V=(n,t)=>`<sup>${n}</sup> ${t}`;
+// 12/20 周 · 圣诞周 · 道成了肉身。PAINTER / PAINTING / STORYVID / WSC 四个占位注释由 build.py 按版本替换
+const STAR='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 8l5 14 14 5-14 5-5 14-5-14-14-5 14-5z"/><path d="M20 62h60l-8 22H28z"/><path d="M14 62h72"/><path d="M34 62c2-8 30-8 32 0"/><path d="M30 84l-6 8M70 84l6 8"/></svg>';
+const TABLE='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 50h76"/><path d="M22 50v34M78 50v34"/><circle cx="30" cy="30" r="8"/><circle cx="50" cy="26" r="8"/><circle cx="70" cy="30" r="8"/><path d="M42 44h16"/></svg>';
+const APPLE='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 34c-8-8-28-6-30 14-2 20 12 38 22 38 4 0 5-2 8-2s4 2 8 2c10 0 24-18 22-38-2-20-22-22-30-14z"/><path d="M50 34c0-8 2-14 8-20"/><path d="M58 20c6-4 14-2 16 2-6 4-12 4-16-2z"/></svg>';
+const BOOK='<svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 26c-10-8-22-8-34-4v54c12-4 24-4 34 4 10-8 22-8 34-4V22c-12-4-24-4-34 4z"/><path d="M50 26v54"/><path d="M40 12c0-4 20-4 20 0"/></svg>';
+const ROUNDS=[
+{n:1,t:'世界名画',c:'c1',col:'#ef7a5a',tm:'看一幅画',art:'<img src="assets/latour-adoration.jpg" alt="">',d:'拉图尔《牧羊人朝拜》：一支蜡烛，照亮了一屋子的人。',slides:[
+`<div class="two wide"><img class="pic" src="assets/latour-adoration.jpg" alt="拉图尔《牧羊人朝拜》：昏暗的屋子里，几个人围着一个裹在襁褓里的婴孩，一支蜡烛的光照在他们脸上"><div><h3>先安静看 30 秒</h3><p class="big">你的眼睛最先看到哪里？</p><p>不用急着回答。看完之后，说一个你看见的东西，再说一个你感觉到的东西。</p></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/latour-adoration.jpg" alt="拉图尔《牧羊人朝拜》"><div><h3>找一找</h3>
+<details><summary>光是从哪里来的？</summary><p>找一找右边那位老人手里的蜡烛。他是约瑟，正用另一只手挡着火苗，好像怕风把它吹灭，也怕光太亮晃到孩子。</p></details>
+<details><summary>正中间躺着的是谁？</summary><p>刚出生的耶稣，裹在襁褓里，闭着眼睛睡着了。</p></details>
+<details><summary>马利亚在做什么？</summary><p>她在画面的一边，两只手合在一起，安静地看着孩子。</p></details>
+<details><summary>还有谁来了？</summary><p>几个牧羊人，还有一位端着碗的妇人。他们没有带贵重的礼物，就是放下手里的活赶来的。</p></details>
+<details><summary>再找一个小客人</summary><p>一只小羊也把头凑了过来，就在孩子旁边。</p></details></div></div>`,
+`<div class="two wide"><img class="pic" src="assets/latour-adoration.jpg" alt="拉图尔《牧羊人朝拜》"><div><h3>这幅画里没有的东西</h3><p class="big">没有天使，没有光环，没有金色的星星。</p><p>很多画家画耶稣降生，会画满天的天使和发光的云。拉图尔都没有画。他画的就像一户普通人家的夜晚：一间暗暗的屋子，一支蜡烛，几个安静的人。</p><details><summary>每个人的眼睛在看哪里？</summary><p>差不多都在看同一个地方：那个孩子。</p></details><details><summary>他们在说话吗？</summary><p>看起来没有。整幅画很安静，好像谁都不敢大声出气。</p></details><div class="ask">如果神的儿子降生在一间这样普通的屋子里，这告诉你祂是一位怎样的神？</div></div></div>`,
+`<h3>关于这幅画</h3><p class="big">《牧羊人朝拜》</p><p>乔治·德·拉图尔（Georges de La Tour，1593–1652）· 约 1644 年 · 布面油画 · 藏于巴黎卢浮宫。</p><p>拉图尔是法国东部洛林地区的画家，最拿手的就是画烛光：一间黑屋子，一点火苗，照亮几张脸。</p><p>他在世的时候很有名。可是去世以后，人们渐渐把他忘了，他的画还被当成别人的作品。过了差不多三百年，到了 20 世纪，才有学者重新把他认出来。</p><div class="ask">一个被忘了三百年的画家，画了一个生在马槽里、起初没什么人注意的婴孩。你觉得这两件事像不像？</div>`,
+`<div class="two wide"><img class="pic" src="assets/latour-adoration.jpg" alt="拉图尔《牧羊人朝拜》"><div><h3>想一想</h3><p class="big">真正照亮所有人脸的，是蜡烛，还是那个婴孩？</p><p>再看一遍：画里最亮的地方在哪里？是火苗，还是孩子身上？</p><div class="verse">那光是真光，照亮一切生在世上的人。<div class="ref">约翰福音 1:9</div></div><div class="ask">如果你也站在这间屋子里，你会站在谁旁边？你想对这个孩子说什么？</div></div></div>`,
+]},
+{n:2,t:'读一段经文',c:'c2',col:'#7b5cd6',tm:'读一读',art:STAR,d:'这周没有主日课。我们慢慢读圣诞的那一夜。',slides:[
+`<h3>那一夜，在伯利恒</h3><p>这周没有新的一课。我们把大家最熟悉的那一段，慢慢读一遍。可以请一个人大声读。</p><div class="verse">${V(7,'就生了头胎的儿子，用布包起来，放在马槽里，因为客店里没有地方。')}<br>${V(10,'那天使对他们说：“不要惧怕！我报给你们大喜的信息，是关乎万民的；')}<br>${V(11,'因今天在大卫的城里，为你们生了救主，就是主基督。')}<br>${V(12,'你们要看见一个婴孩，包着布，卧在马槽里，那就是记号了。”')}<div class="ref">路加福音 2:7、10-12</div></div><details><summary>天使说的“记号”是什么？</summary><p>不是王宫，不是宝座，而是一个包着布、躺在马槽里的婴孩。</p></details><details><summary>这个好消息是给谁的？</summary><p>“关乎万民的”。不只给好学生，不只给受欢迎的人。</p></details><div class="ask">如果让你来安排“救主出生”，你会把祂安排在哪里？神的安排和你的有什么不一样？</div>`,
+`<h3>祂搬进来了</h3><div class="verse">道成了肉身，住在我们中间，充充满满地有恩典有真理。我们也见过他的荣光，正是父独生子的荣光。<div class="ref">约翰福音 1:14</div></div><p class="big">“道”就是神的儿子。“成了肉身”，就是祂成了一个真正的人。“住在我们中间”，就是祂搬进来，和我们住在一起。</p><details><summary>神本来可以怎么做？</summary><p>祂可以在天上大声喊话，可以只派天使来传话，可以只写一本书给我们。</p></details><details><summary>可是祂做了什么？</summary><p>祂亲自来了：做过婴孩，做过小孩，做过少年人，一直到长大。</p></details><div class="ask">神为什么不在天上喊话，而要亲自来？</div>`]},
+{n:3,t:'小禾的篮子',c:'c3',col:'#2fa59a',tm:'第二季 · 第 7 集',art:APPLE,d:'平安夜，全班桌上都有苹果，只有一张桌子是空的。',slides:[
+`<h3>小禾的篮子 · 第二季《记名本》</h3><p class="big">第 7 集《住在我们中间》</p><p class="big" style="font-size:22px">上一集：</p><div class="story"><p>元旦联欢会选主持人，全班都在喊“赵一鸣”，我也喊了。可是年级审查那天，他忘了带 U 盘，音箱也没声。刚才还在欢呼的人，转头就说“选错人了”。</p><p>是陈默搬来一只旧音箱顶上，又连夜把伴奏重新剪了一遍。孙老师问是谁修的，他没有举手。</p><p>我问他，星期天要不要来看我们教会的圣诞哑剧。12 月 20 日那天，他真的来了，和安安一起，坐在最后一排。</p></div>`,
+`<span class="day">周一 · 以赛亚书 9:6</span><h3>有一婴孩为我们而生</h3><div class="story"><p>星期一大课间跑完操，陈默走在我旁边，憋了半天才开口：“昨天那个剧我看了。有一件事我没想明白。你们的神那么厉害，为什么要变成一个小孩？”</p><p>我张了张嘴，答不上来。我只知道圣诞节是耶稣的生日，从来没想过“为什么是小孩”。</p><p>晚上我发消息问周老师。周老师回了我一节经文，又加了一句：“大人是来管你的，婴孩是来到你中间的。你先自己想想，这两样有什么不一样。”</p><p>我把这句话抄在了速写本上。</p></div><div class="verse">因有一婴孩为我们而生，有一子赐给我们。<div class="ref">以赛亚书 9:6（上半节）</div></div><div class="ask">如果有同学这样问你：“神为什么要变成一个小孩？”你会怎么回答？</div>`,
+`<span class="day">周二 · 路加福音 2:1-7</span><h3>客店里没有地方</h3><div class="story"><p>星期二早上，联欢会的节目分组表贴在了教室后面的黑板上。小合唱、三句半、街舞、魔术，每一组下面都是一串名字。</p><p>我找了两遍，没有找到“陈默”。最后在最底下一行看到了：后勤，陈默。就他一个人。</p><p>没有人是故意的。只是每一组凑人的时候，都没有想起他。</p><p>晚上灵修，我读到马利亚把孩子放在马槽里，“因为客店里没有地方”。我盯着这几个字看了很久。原来耶稣一出生，就知道“名单上没有我”是什么滋味。</p></div><div class="ask">你有没有过“每一组都没有我”的时候？知道耶稣也经历过“没有地方”，你的感觉会不一样吗？</div>`,
+`<span class="day">周三 · 路加福音 2:8-14</span><h3>先告诉牧羊人</h3><div class="story"><p>今天读到，救主出生的消息，天使最先告诉的是一群夜里在野地值班的牧羊人。周老师说过，那时候牧羊人是最不起眼的人，没什么人看得起他们。</p><p>放学后轮到陈默做值日。教室里人都走光了，他一个人踩着凳子擦黑板，粉笔灰落了一肩膀。</p><p>我从书包里拿出团契发的圣诞卡，上面印着一句话：“为你们生了救主”。我在“你们”旁边画了个小箭头，写上：也包括你。</p><p>我把卡片递给他。他看了很久，没说话，把卡片夹进了那个黑色的本子里。</p></div><div class="ask">神把最大的好消息，先告诉了最不起眼的人。在你身边，谁是那个“值夜班的牧羊人”？</div>`,
+`<span class="day">周四 · 平安夜 · 约翰福音 1:14</span><h3>住在我们中间</h3><div class="story"><p>今天是平安夜，照常上课，照常留作业。早上一进教室，到处都是包着彩纸的苹果，大家互相送“平安果”。赵一鸣的桌上堆了七八个。</p><p>第一排那张桌子上，一个都没有。陈默低着头，假装在翻书。</p><p>午休的时候，我和安安把各自带来的苹果放在了他的桌上。纸条上没有写“记名机”，写的是：陈默，平安。</p><p>晚上我读到“道成了肉身，住在我们中间”，忽然想明白了一点：耶稣不是坐在天上，拿着本子记我们的名字、扣我们的分。祂下来了，和我们坐同一张桌子。</p></div><div class="ask">“记名字、扣分的神”和“坐到你这一桌的神”，哪一个更像你心里想的神？圣经说的是哪一个？</div>`,
+`<span class="day">周五 · 圣诞节 · 腓立比书 2:5-8</span><h3>祂也被人叫过外号</h3><div class="story"><p>星期五早上，陈默的桌上多了第三个苹果，没有纸条。赵一鸣正好从第一排走过去，看着窗外，耳朵有点红。</p><p>中午吃饭，陈默问我：“耶稣也被人叫过外号吗？”</p><p>我想了想，说：“有。有人叫祂‘拿撒勒人’，意思是小地方来的；有人说祂不过是‘木匠的儿子’；还有人叫祂‘税吏和罪人的朋友’。”</p><p>陈默说：“最后那个，听着不像骂人。”安安说：“我也觉得。”</p><p>星期六晚上八点，线上团契的名单里多了一个新名字。他没开摄像头，只开了麦，小声说了一句：“大家好，我是陈默。”</p></div><div class="ask">保罗说耶稣“取了奴仆的形像”，一路降卑。耶稣被人看不起、被人叫外号，这件事怎样让你觉得“祂懂我”？</div>`,
+`<h3>下一集</h3><div class="story"><p>星期一早上，黑板右上角多了一行粉笔字：</p><p class="big">“距期末还有 14 天”</p><p>班级群里开始疯传一份“内部押题”。孙老师说，下学期有一件事要变。</p></div><p>第 8 集《还没到的那天》</p><div class="ask">这一集里，哪一个画面你最想画下来？</div>`]},
+{n:4,t:'反思和生活应用',c:'c4',col:'#3f8fd8',tm:'带回家',art:TABLE,d:'祂没有在远处喊话，祂搬进来了。',slides:[
+`<h3>祂没有在远处喊话</h3><p class="big">神要对我们说“我爱你”，祂选了最近的一种方式：亲自来。</p><details><summary>祂来到了哪里？</summary><p>不是王宫，是马槽。不是大城市，是小小的伯利恒。</p></details><details><summary>最先知道的是谁？</summary><p>不是大人物，是夜里值班的牧羊人。</p></details><details><summary>“住在我们中间”是住多久？</summary><p>不是来看一眼就走。祂在这世上长大、生活了三十多年，并且应许永远与我们同在。（太 28:20）</p></details><div class="ask">如果耶稣“搬进”你们班，你觉得祂会坐在哪一张桌子旁边？</div>`,
+`<h3>祂什么都经历过</h3><div class="anchors"><div>会饿，会累，会哭</div><div>被人叫外号</div><div>也过过 13 岁</div></div><p class="big">耶稣不是“看起来像人”，祂是真正的人。所以你的事，祂不是听说过，而是经历过。</p><p>只有一样不同：祂没有犯罪。所以祂既懂我们，又能救我们。（来 4:15）</p><div class="ask">你有没有一件觉得“没人懂”的事？试着在祷告里告诉耶稣：祂真的懂。</div>`,
+`<h3>这周在学校，你可以这样做</h3><p>耶稣坐到了我们这一桌。选一个，照样去“坐到别人那一桌”。不用告诉别人。</p><div class="steps">${['给一个没人送苹果的同学，送一个平安果','分组的时候，先想想谁还没有组','陪做值日的同学一起擦黑板','中午和一个人吃饭的同学坐一桌','写一张卡片，写上对方的名字','请一个朋友周六来线上团契'].map(t=>`<button class="pickb">${t}</button>`).join('')}</div>`,
+`<div class="pray">“耶稣，谢谢你没有在远处喊话，<br>而是亲自来，住在我们中间。<br>我的事你都懂。<br>求你帮我也走到别人身边去。”</div><p style="text-align:center">这周金句：道成了肉身，住在我们中间，充充满满地有恩典有真理。（约翰福音 1:14）</p>`]},
+{n:5,t:'小要理问答',c:'c5',col:'#c98a1e',tm:'第 22 问',art:BOOK,d:'神的儿子怎样成为人？圣诞节的答案。',slides:[
+`<h3>先复习：前两周的两句话</h3><p>点横线，看看你还记不记得。</p><div class="qa"><div class="q">第 87 问 · 什么是得生命的悔改？</div><p class="a"><span class="blank" role="button" tabindex="0">离开</span>罪，<span class="blank" role="button" tabindex="0">归向</span>神。</p></div><div class="qa"><div class="q">第 26 问 · 基督怎样执行君王的职分？</div><p class="a">耶稣是王：<span class="blank" role="button" tabindex="0">管理</span>我们，<span class="blank" role="button" tabindex="0">保护</span>我们，<span class="blank" role="button" tabindex="0">战胜</span>仇敌。</p></div><div class="qa"><div class="q">这周 · 第 22 问</div><p class="a">基督既是神的儿子，怎样成为人？</p></div><div class="ask">先别翻页。用你自己的话说说看：圣诞节到底发生了什么？</div>`,
+`<h3>第 22 问</h3><div class="qa"><div class="q">问：基督既是神的儿子，怎样成为人？</div><p class="a">答：神的儿子基督成为人，是取了真实的身体和有理性的灵魂，借着圣灵的能力，在童女马利亚腹中成孕，由她所生，却没有罪。</p></div><p style="font-size:16px;color:#6d6580">Q. 22. How did Christ, being the Son of God, become man? — A. Christ, the Son of God, became man, by taking to himself a true body, and a reasonable soul, being conceived by the power of the Holy Ghost, in the womb of the virgin Mary, and born of her, yet without sin.</p>`,
+`<h3>一句一句拆开看</h3><div class="parts"><div><b>真实的身体</b>耶稣会饿、会累、会流泪，不是“看起来像人”。</div><div><b>有理性的灵魂</b>祂也会思想、会难过、会被试探，和我们一样。</div><div><b>圣灵感孕，童女所生</b>这是神亲自做的事，不是人能造出来的英雄。（路 1:35）</div><div><b>却没有罪</b>所以祂能体恤我们，也能替我们死。祂凡事受过试探，与我们一样，只是没有犯罪。（来 4:15）</div></div>`,
+`<h3>在圣诞故事里找一找</h3><details><summary>“真实的身体”在哪里？</summary><p>“用布包起来，放在马槽里。”（路 2:7）一个要人抱、要人喂、会冷的婴孩。</p></details><details><summary>“借着圣灵的能力”在哪里？</summary><p>天使对马利亚说，圣灵要临到她身上，所以她要生的那位是圣的，要称为神的儿子。（路 1:35）</p></details><details><summary>“童女马利亚”在哪里？</summary><p>天使奉差遣去见一个童女，名叫马利亚。（路 1:27）</p></details><details><summary>“却没有罪”为什么要紧？</summary><p>如果耶稣自己也有罪，祂就不能替我们担罪。祂是真正的人，才能代表我们；祂没有罪，才能救我们。</p></details><div class="ask">小禾对陈默说，耶稣也被人叫过外号。这和第 22 问的哪一句有关系？</div>`,
+`<h3>背一背（点横线看答案）</h3><div class="qa"><div class="q">问：基督既是神的儿子，怎样成为人？</div><p class="a">答：神的儿子基督成为人，是取了<span class="blank" role="button" tabindex="0">真实的身体</span>和<span class="blank" role="button" tabindex="0">有理性的灵魂</span>，借着<span class="blank" role="button" tabindex="0">圣灵</span>的能力，在<span class="blank" role="button" tabindex="0">童女马利亚</span>腹中成孕，由她所生，却<span class="blank" role="button" tabindex="0">没有罪</span>。</p></div><p>先完整念两遍，再一个空一个空地填。这周周六线上，我们一起背。</p><div class="kidline" style="font-size:22px">一句话记住：耶稣成为真正的人，却没有罪。</div>`,
+`<h3>带回家一问</h3><p class="big">耶稣也做过和你一样大的少年人，这对你意味着什么？</p><div class="pray" style="padding:3vh 2vw">“主耶稣，谢谢你成为真正的人，<br>你懂我，你也能救我。”</div><p style="text-align:center;font-size:16px;color:#6d6580">问答的中文是暂译稿。证明经文：腓 2:7；来 2:14,17；路 1:27,31,35；林后 5:21；来 4:15；7:26；约壹 3:5</p>`]}
+];
+
+let cur=0,round=null,idx=0;
+const fan=$('#fan');
+ROUNDS.forEach((r,i)=>{const b=document.createElement('button');b.className='rcard '+r.c;b.innerHTML=`<span class="n">${r.n}</span><span class="art">${r.art}</span><h3>${r.t}</h3><span class="tm">${r.tm}</span>`;b.onmouseenter=b.onfocus=()=>pick(i);b.onclick=()=>open(i);fan.appendChild(b)});
+function layout(){const n=ROUNDS.length,narrow=innerWidth<=760;$$('.rcard').forEach((c,i)=>{c.classList.toggle('sel',i===cur);if(narrow){c.style.transform='';return}const k=i-(n-1)/2,lift=i===cur?-30:0;const sp=n>4?178:196;c.style.transform=`translateX(${k*sp}px) translateY(${Math.abs(k)*14+lift}px) rotate(${k*6}deg) scale(${i===cur?1.06:1})`;c.style.zIndex=i===cur?10:5-Math.abs(Math.round(k))})}
+function pick(i){cur=i;$('#ih').textContent=ROUNDS[i].n+' · '+ROUNDS[i].t;$('#ip').textContent=ROUNDS[i].d;layout()}
+function open(i){round=ROUNDS[i];idx=0;$('#hub').style.display='none';$('#deck').style.display='block';$('#dchip').textContent='第 '+round.n+' 块';$('#dchip').style.background=round.col;$('#dtitle').textContent=round.t;show();scrollTo(0,0)}
+function show(){$('#stage').innerHTML=round.slides[idx];$('#dots').textContent=(idx+1)+' / '+round.slides.length;$('#prev').disabled=idx===0;$('#next').textContent=idx===round.slides.length-1?'回到选关':'下一页 →';
+ $$('#stage .pic').forEach(p=>p.onclick=()=>{$('#zimg').src=p.src;$('#zoom').style.display='flex'});
+ $$('#stage .pickb').forEach(b=>b.onclick=()=>b.classList.toggle('on'));$$('#stage .blank').forEach(b=>b.onclick=()=>b.classList.toggle('show'));scrollTo(0,0)}
+function home(){round=null;$('#deck').style.display='none';$('#hub').style.display='block';layout()}
+function go(d){const k=idx+d;if(k<0)return;if(k>=round.slides.length)return home();idx=k;show()}
+$('#prev').onclick=()=>go(-1);$('#next').onclick=()=>go(1);$('#back').onclick=home;$('#enter').onclick=()=>open(cur);$('#zoom').onclick=()=>$('#zoom').style.display='none';
+addEventListener('keydown',e=>{if($('#zoom').style.display==='flex'){if(e.key==='Escape')$('#zoom').style.display='none';return}
+ if(round){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);else if(e.key==='Escape')home()}
+ else{if(e.key==='ArrowRight')pick((cur+1)%ROUNDS.length);else if(e.key==='ArrowLeft')pick((cur+ROUNDS.length-1)%ROUNDS.length);else if(e.key==='Enter'&&!e.target.closest('button'))open(cur)}});
+addEventListener('resize',layout);pick(0);
+</script></body></html>
